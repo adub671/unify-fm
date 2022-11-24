@@ -1,4 +1,5 @@
 import React from "react";
+import DeleteStation from "./DeleteStation";
 
 const StationCard = ({ station }) => {
   return (
@@ -9,6 +10,7 @@ const StationCard = ({ station }) => {
         </div>
         <div>{station?.name}</div>
       </div>
+      <DeleteStation station={station} />
     </>
   );
 };

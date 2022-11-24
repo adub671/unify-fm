@@ -109,7 +109,7 @@ const stations = (state = initialState, action) => {
       return newState;
     case DELETE_STATION:
       newState = { ...state };
-      delete newState[action.chatId];
+      delete newState[action.station.id];
       return newState;
     case EDIT_STATION:
       newState = { ...state };
