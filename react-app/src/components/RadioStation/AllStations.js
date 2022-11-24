@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStations } from "../../store/radioStations";
+import EditStation from "./EditStation";
 import StationCard from "./StationCard";
 
 const AllStations = () => {
@@ -13,8 +14,6 @@ const AllStations = () => {
     })();
   }, [dispatch]);
 
-  console.log(stations);
-
   return (
     <>
       <div>Stations</div>
@@ -24,6 +23,7 @@ const AllStations = () => {
             <StationCard station={station} />
           ))}
       </div>
+      <EditStation station={stations[1]} />
     </>
   );
 };

@@ -1,28 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { newStation } from "../../store/radioStations";
+import { editStation } from "../../store/radioStations";
 
-const CreateStation = () => {
+const EditStation = ({ station }) => {
   const dispatch = useDispatch();
-  const [name, setName] = useState();
   const user = useSelector((state) => state.session.user);
-  //   const [adminId, setAdminId] = useState()
-  const [stream_url, setStreamUrl] = useState("");
-  const [image_url, setImageUrl] = useState("");
-  const [chat_url, setChatUrl] = useState("");
-  const [website_url, setWebsiteUrl] = useState("");
-  const [calendar_url, setCalendarUrl] = useState("");
-  const [additional_link_1, setLink1] = useState("");
-  const [additional_link_2, setLink2] = useState("");
-  const [additional_link_3, setLink3] = useState("");
-  const [additional_label_1, setLabel1] = useState("");
-  const [additional_label_2, setLabel2] = useState("");
-  const [additional_label_3, setLabel3] = useState("");
+
+  const [name, setName] = useState(station?.name);
+  const [stream_url, setStreamUrl] = useState(station?.stream_url);
+  const [image_url, setImageUrl] = useState(station?.image_url);
+  const [chat_url, setChatUrl] = useState(station?.chat_url);
+  const [website_url, setWebsiteUrl] = useState(station?.website_url);
+  const [calendar_url, setCalendarUrl] = useState(station?.calendar_url);
+  const [additional_link_1, setLink1] = useState(station?.additional_link_1);
+  const [additional_link_2, setLink2] = useState(station?.additional_link_2);
+  const [additional_link_3, setLink3] = useState(station?.additional_link_3);
+  const [additional_label_1, setLabel1] = useState(station?.additional_label_1);
+  const [additional_label_2, setLabel2] = useState(station?.additional_label_2);
+  const [additional_label_3, setLabel3] = useState(station?.additional_label_3);
+
+  useEffect(() => {
+    setName(station?.name);
+    setStreamUrl(station?.stream_url);
+    setImageUrl(station?.image_url);
+    setChatUrl(station?.chat_url);
+    setWebsiteUrl(station?.website_url);
+    setCalendarUrl(station?.calendar_url);
+    setLink1(station?.additional_link_1);
+    setLink2(station?.additional_link_2);
+    setLink3(station?.additional_link_3);
+    setLabel1(station?.additional_label_1);
+    setLabel2(station?.additional_label_2);
+    setLabel3(station?.additional_label_3);
+  }, [station]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
+      id: station?.id,
       name,
       admin_id: user.id,
       stream_url,
@@ -37,16 +53,17 @@ const CreateStation = () => {
       additional_label_2,
       additional_label_3,
     };
-    await dispatch(newStation(payload));
+    await dispatch(editStation(payload));
   };
 
   return (
     <>
-      <h1>Create A Station</h1>
+      <h1>Edit A Station</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Station Name: </label>
           <input
+            value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -55,6 +72,7 @@ const CreateStation = () => {
         <div>
           <label>Stream URL: </label>
           <input
+            value={stream_url}
             onChange={(e) => {
               setStreamUrl(e.target.value);
             }}
@@ -63,6 +81,7 @@ const CreateStation = () => {
         <div>
           <label>Image URL: </label>
           <input
+            value={image_url}
             onChange={(e) => {
               setImageUrl(e.target.value);
             }}
@@ -71,6 +90,7 @@ const CreateStation = () => {
         <div>
           <label>Chat URL: </label>
           <input
+            value={chat_url}
             onChange={(e) => {
               setChatUrl(e.target.value);
             }}
@@ -79,6 +99,7 @@ const CreateStation = () => {
         <div>
           <label>Website URL: </label>
           <input
+            value={website_url}
             onChange={(e) => {
               setWebsiteUrl(e.target.value);
             }}
@@ -87,6 +108,7 @@ const CreateStation = () => {
         <div>
           <label>Calendar URL: </label>
           <input
+            value={calendar_url}
             onChange={(e) => {
               setCalendarUrl(e.target.value);
             }}
@@ -95,6 +117,7 @@ const CreateStation = () => {
         <div>
           <label>Additional Label: </label>
           <input
+            value={additional_label_1}
             onChange={(e) => {
               setLabel1(e.target.value);
             }}
@@ -103,6 +126,7 @@ const CreateStation = () => {
         <div>
           <label>Additional Link: </label>
           <input
+            value={additional_link_1}
             onChange={(e) => {
               setLink1(e.target.value);
             }}
@@ -111,6 +135,7 @@ const CreateStation = () => {
         <div>
           <label>Additional Label: </label>
           <input
+            value={additional_label_2}
             onChange={(e) => {
               setLabel2(e.target.value);
             }}
@@ -119,6 +144,7 @@ const CreateStation = () => {
         <div>
           <label>Additional Link: </label>
           <input
+            value={additional_link_2}
             onChange={(e) => {
               setLink2(e.target.value);
             }}
@@ -127,6 +153,7 @@ const CreateStation = () => {
         <div>
           <label>Additional Label: </label>
           <input
+            value={additional_label_3}
             onChange={(e) => {
               setLabel3(e.target.value);
             }}
@@ -135,6 +162,7 @@ const CreateStation = () => {
         <div>
           <label>Additional Link: </label>
           <input
+            value={additional_link_3}
             onChange={(e) => {
               setLink3(e.target.value);
             }}
@@ -146,4 +174,4 @@ const CreateStation = () => {
   );
 };
 
-export default CreateStation;
+export default EditStation;
