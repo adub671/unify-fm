@@ -1,5 +1,6 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+from .radio_stations import seed_radio_stations, undo_radio_stations
 
 from app.models.db import db, environment, SCHEMA
 
@@ -18,6 +19,7 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
     seed_users()
+    seed_radio_stations()
     # Add other seed functions here
 
 
@@ -25,4 +27,5 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_radio_stations()
     # Add other undo functions here
