@@ -46,7 +46,7 @@ def create_station():
         new_station_response = RadioStation.query.order_by(
             RadioStation.id.desc()).first()
         return new_station_response.to_dict()
-    return form.errors
+    return {"errors": form.errors}
 
 
 @radio_station_routes.route('/<int:station_id>', methods=["DELETE"])
@@ -91,99 +91,3 @@ def update_station(station_id):
             return station.to_dict()
         return {"errors": form.errors}
     return 'Station Not Found'
-
-
-# @ chat_routes.route('/<int:chat_id>')
-# def get_chat_messages(chat_id):
-#     """
-#     Query for chat messages by chat id and returns a list of chat messages (list of dictionary)
-#     """
-#     chat_messages = ChatMessage.query.filter_by(chat_id=chat_id).all()
-#     chat_message_list = [chat_message.to_dict()
-#                          for chat_message in chat_messages]
-#     return jsonify(chat_message_list)
-
-
-# @ chat_routes.route('/<int:chat_id>', methods=['POST'])
-# def post_chat_messages(chat_id):
-#     """
-#     Post a new chat message
-#     """
-#     chat_messages = ChatMessage.query.filter_by(chat_id=chat_id).all()
-#     form = ChatMessageForm()
-#     data = form.data
-#     print(data, 'FORMDATA****')
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         new_message = ChatMessage(
-#             author_id=current_user.id, chat_id=chat_id, body=data['body'], createdAt=func.now())
-#         db.session.add(new_message)
-#         db.session.commit()
-#         created_message = ChatMessage.query.order_by(
-#             ChatMessage.id.desc()).first()
-#         return created_message.to_dict()
-#     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
-
-
-# @ chat_routes.route('/<int:chat_id>', methods=["PUT"])
-# def edit_chat_details(chat_id):
-#     """Edit Chat Name & Chat Members"""
-#     form = ChatForm()
-#     chat = Chat.query.get(chat_id)
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if chat and form.validate_on_submit():
-#         data = form.data
-#         name = data['name']
-#         chat.name = name
-#         chat.chat_members = []
-#         chat_members = [int(chat_member)
-#                         for chat_member in data["chat_members_lst"].split(",")]
-#         for chat_member in chat_members:
-#             chat_user = User.query.get(chat_member)
-#             chat.chat_members.append(chat_user)
-#         db.session.add(chat)
-#         db.session.commit()
-#         result = chat_schema.dump(chat)
-#         return (jsonify(result))
-#     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
-
-
-# @ chat_routes.route('/message/<int:chat_message_id>', methods=["PUT"])
-# def edit_chat_message(chat_message_id):
-#     """Edit Chat Message"""
-#     form = ChatMessageForm()
-#     chat_message = ChatMessage.query.get(chat_message_id)
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if chat_message and form.validate_on_submit():
-#         data = form.data
-#         chat_message.body = data['body']
-#         chat_message.updatedAt = func.now()
-#         db.session.add(chat_message)
-#         db.session.commit()
-#         result = chat_message_schema.dump(chat_message)
-#         return (jsonify(result))
-#     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
-
-
-# @ chat_routes.route('/<int:chat_id>/members')
-# def get_chat_members(chat_id):
-#     """
-#     Query for chat members by chat id
-#     """
-#     chat = Chat.query.get(chat_id)
-#     response = [members.to_dict() for members in chat.chat_members]
-#     return jsonify(response)
-
-
-# @ chat_routes.route('/message/<int:chat_message_id>', methods=["DELETE"])
-# def delete_chat_message(chat_message_id):
-#     """
-#     Query for chat messages by chat id and returns a list of chat messages (list of dictionary)
-#     """
-#     chat_message = ChatMessage.query.get(chat_message_id)
-#     print(chat_message, 'chatmessage*****')
-#     if chat_message:
-#         db.session.delete(chat_message)
-#         db.session.commit()
-#         return 'Deleted Chat Message'
-#     return 'Delete Not Successful'

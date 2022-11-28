@@ -57,8 +57,8 @@ export const newStation = (station) => async (dispatch) => {
     const data = await response.json();
     if (!data.errors) {
       dispatch(addStation(data));
-      return data;
-    } else return data.errors;
+    }
+    return data;
   } else {
     alert("Error Occurred during Create Station");
   }
@@ -75,7 +75,9 @@ export const editStation = (station) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(editAStation(data));
+    if (!data.errors) {
+      dispatch(editAStation(data));
+    }
     return data;
   } else {
     alert("Error Occurred During Edit Station");

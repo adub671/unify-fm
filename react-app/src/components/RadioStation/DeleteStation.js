@@ -9,7 +9,7 @@ const DeleteStation = ({ station }) => {
   };
   return (
     <>
-      <button onClick={handleDelete}>Delete Station</button>
+      <i className="fa-trash-can fa-regular" onClick={handleDelete}></i>
     </>
   );
 };
