@@ -1,6 +1,7 @@
 import React from "react";
 import DeleteStation from "./DeleteStation";
-import FavoriteButton from "./Favorite";
+import FavoriteButton from "./FavoriteButton";
+import "./StationCard.css";
 
 const StationCard = ({ station }) => {
   return (

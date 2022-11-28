@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session";
 import stations from "./radioStations";
+import favorites from "./favoriteStations";
 
 const rootReducer = combineReducers({
   session,
   stations,
+  favorites,
 });
 
 let enhancer;

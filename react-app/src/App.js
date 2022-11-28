@@ -10,6 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import AllStations from "./components/RadioStation/AllStations";
 import CreateStation from "./components/RadioStation/CreateStation";
+import FavoriteStations from "./components/RadioStation/FavoriteStations";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,7 +44,10 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path="/" exact={true}>
-          <h1>My Home Page</h1>
+          <h1>UNIFY FM</h1>
+        </Route>
+        <Route path="/favorites" exact={true}>
+          <FavoriteStations />
         </Route>
       </Switch>
       <AllStations />

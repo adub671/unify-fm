@@ -1,5 +1,5 @@
 
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from app.models import RadioStation, User, db
 from ..forms import StationForm, EditStationForm
 from flask_login import current_user
@@ -14,7 +14,7 @@ def get_favorites():
     """
     user = User.query.get(current_user.id)
     favorite_stations = user.favorites
-    return str(user.to_dict()["favorites"])
+    return jsonify(user.to_dict()["favorites_index"])
 
 
 @favorite_routes.route('/<int:station_id>', methods=["POST"])
