@@ -45,7 +45,7 @@ export const newFavorite = (station) => async (dispatch) => {
     body: JSON.stringify(station),
   });
   if (response.ok) {
-    dispatch(addFavoriteStation(station));
+    dispatch(addFavoriteStation(station.id));
   } else {
     alert("Error Occurred during Favorite-ing station");
   }
@@ -56,9 +56,9 @@ export const deleteFavorite = (station) => async (dispatch) => {
   const response = await fetch(`/api/favorite/${station.id}`, {
     method: "DELETE",
   });
-  console.log("favorite un=store");
+
   if (response.ok) {
-    dispatch(removeFavoriteStation(station));
+    dispatch(removeFavoriteStation(station.id));
   } else {
     alert("Error Occurred during Un-favorite-ing a station");
   }
@@ -74,10 +74,10 @@ const favorites = (state = initialState, action) => {
       return newState;
     case ADD_FAVORITE_STATION:
       newState = [...state];
-      newState.push(action.favoriteIndex.id);
+      newState.push(action.favoriteIndex);
       return newState;
     case DELETE_FAVORITE_STATION:
-      const index = state.indexOf(action.favoriteIndex.id);
+      const index = state.indexOf(action.favoriteIndex);
       const newArr = state.splice(index - 1, 1);
       newState = [...newArr];
       return newState;

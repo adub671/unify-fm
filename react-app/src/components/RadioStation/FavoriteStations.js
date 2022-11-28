@@ -9,8 +9,6 @@ const FavoriteStations = () => {
   const stations = useSelector((state) => state.stations);
   const [faveStations, setFaveStations] = useState();
 
-  console.log(favorites, "favorites");
-
   useEffect(() => {
     const faves = favorites?.map((fave) => {
       return stations[fave];
