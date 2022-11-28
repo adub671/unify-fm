@@ -18,6 +18,7 @@ const EditStation = ({ station }) => {
   const [additional_label_1, setLabel1] = useState(station?.additional_label_1);
   const [additional_label_2, setLabel2] = useState(station?.additional_label_2);
   const [additional_label_3, setLabel3] = useState(station?.additional_label_3);
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     setName(station?.name);
@@ -40,7 +41,7 @@ const EditStation = ({ station }) => {
     const payload = {
       id: station?.id,
       name,
-      admin_id: user.id,
+      admin_id: user?.id,
       stream_url,
       image_url,
       chat_url,
@@ -53,12 +54,25 @@ const EditStation = ({ station }) => {
       additional_label_2,
       additional_label_3,
     };
-    await dispatch(editStation(payload));
+    const response = await dispatch(editStation(payload));
+
+    if (response.errors) {
+      const backendErrs = Object.entries(response.errors);
+      setErrors(backendErrs);
+    }
   };
 
   return (
     <>
       <h1>Edit A Station</h1>
+      <div className="validation-errors">
+        {errors?.length > 0 &&
+          errors?.map((error) => (
+            <div>
+              {error[0]} : {error[1]}
+            </div>
+          ))}
+      </div>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Station Name: </label>

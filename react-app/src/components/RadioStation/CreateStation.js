@@ -18,13 +18,20 @@ const CreateStation = () => {
   const [additional_label_1, setLabel1] = useState("");
   const [additional_label_2, setLabel2] = useState("");
   const [additional_label_3, setLabel3] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([]);
+
+    const errs = [];
+    if (name?.length > 100) {
+      errs.push("Station Name Must Be Less Than 100 Characters");
+    }
 
     const payload = {
       name,
-      admin_id: user.id,
+      admin_id: user?.id,
       stream_url,
       image_url,
       chat_url,
@@ -37,12 +44,24 @@ const CreateStation = () => {
       additional_label_2,
       additional_label_3,
     };
-    await dispatch(newStation(payload));
+    const response = await dispatch(newStation(payload));
+    if (response.errors) {
+      const backendErrs = Object.entries(response.errors);
+      setErrors(backendErrs);
+    }
   };
 
   return (
     <>
       <h1>Create A Station</h1>
+      <div className="validation-errors">
+        {errors?.length > 0 &&
+          errors?.map((error) => (
+            <div>
+              {error[0]} : {error[1]}
+            </div>
+          ))}
+      </div>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Station Name: </label>

@@ -46,7 +46,7 @@ def create_station():
         new_station_response = RadioStation.query.order_by(
             RadioStation.id.desc()).first()
         return new_station_response.to_dict()
-    return form.errors
+    return {"errors": form.errors}
 
 
 @radio_station_routes.route('/<int:station_id>', methods=["DELETE"])

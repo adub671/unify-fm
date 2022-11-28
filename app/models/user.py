@@ -16,10 +16,10 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    favorites = db.relationship("RadioStation", secondary=favorites, back_populates="favorited_by")
+    favorites = db.relationship(
+        "RadioStation", secondary=favorites, back_populates="favorited_by")
     created_stations = db.relationship("RadioStation")
     favorited_order = db.Column(db.String())
-    
 
     @property
     def password(self):
@@ -39,5 +39,6 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'email': self.email,
-            'favorited_order': self.favorited_order
+            'favorited_order': self.favorited_order,
+            'favorites': [fave.to_dict() for fave in self.favorites]
         }

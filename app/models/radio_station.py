@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 # Join Table For User & Radio Station (Many to Many)
 favorites = db.Table(
-    "chat_members",
+    "favorites",
     db.Column("radio_station_id",
               db.Integer(),
               db.ForeignKey(add_prefix_for_prod('radio_stations.id')),
