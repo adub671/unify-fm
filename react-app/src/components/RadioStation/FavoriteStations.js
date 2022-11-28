@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFavoriteStations } from "../../store/favoriteStations";
 import { getStations } from "../../store/radioStations";
+import StationCard from "./StationCard";
 
 const FavoriteStations = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const FavoriteStations = () => {
       <div>Favorite Stations</div>
       <div>
         {faveStations?.map((faveStation) => (
-          <div>{faveStation?.name}</div>
+          <StationCard station={faveStation} />
         ))}
       </div>
       <div>END FAVE</div>
