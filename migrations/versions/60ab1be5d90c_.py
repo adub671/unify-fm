@@ -38,6 +38,8 @@ def upgrade():
                     sa.UniqueConstraint('email'),
                     sa.UniqueConstraint('username')
                     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('radio_stations',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('admin_id', sa.Integer(), nullable=False),
@@ -70,6 +72,8 @@ def upgrade():
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('name')
                     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE radio_stations SET SCHEMA {SCHEMA};")
     op.create_table('favorites',
                     sa.Column('radio_station_id',
                               sa.Integer(), nullable=False),
@@ -80,8 +84,6 @@ def upgrade():
                     sa.PrimaryKeyConstraint('radio_station_id', 'user_id')
                     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE radio_stations SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE favorites SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
