@@ -12,6 +12,9 @@ def seed_radio_stations():
     refuge = RadioStation(
         name='Refuge WorldWide', admin_id=1, stream_url="https://streaming.radio.co/s3699c5e49/listen", image_url="https://refugeworldwide.com/og-thumb.jpg", website_url="https://refugeworldwide.com/", chat_url="https://refugeworldwide.com/chat", now_playing_url="https://public.radio.co/stations/s3699c5e49/status")
 
+    particle = RadioStation(
+        name='Particle FM', admin_id=2, stream_url="https://azuracast.particle.fm/radio/8000/radio.mp3", image_url="https://refugeworldwide.com/og-thumb.jpg", website_url="https://particle.fm/", chat_url="https://particle.fm/chat.htm", now_playing_url="https://azuracast.particle.fm/api/nowplaying/1")
+
     db.session.add(kiosk)
     db.session.add(ifmdisco)
     db.session.add(ifmcbs)
