@@ -80,7 +80,9 @@ def upgrade():
                     sa.PrimaryKeyConstraint('radio_station_id', 'user_id')
                     )
     if environment == "production":
-        op.execute(f"ALTER TABLE <table_name> SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE radio_stations SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE favorites SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
