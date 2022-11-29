@@ -16,6 +16,12 @@ const FavoriteButton = ({ station }) => {
     setFavorited(favorites.includes(station.id));
   }, [station, favorites]);
 
+  useEffect(() => {
+    (async () => {
+      await dispatch(getFavoriteStations());
+    })();
+  }, [dispatch]);
+
   const handleFavorite = async () => {
     if (favorited) {
       await dispatch(deleteFavorite(station));
