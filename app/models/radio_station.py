@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 # Join Table For User & Radio Station (Many to Many)
-favorites = db.Table(
+favorites_table = db.Table(
     "favorites",
     db.Column("radio_station_id",
               db.Integer(),
@@ -36,7 +36,7 @@ class RadioStation(db.Model):
     additional_label_2 = db.Column(db.String(100))
     additional_label_3 = db.Column(db.String(100))
     favorited_by = db.relationship(
-        "User", secondary=favorites, back_populates="favorites")
+        "User", secondary=favorites_table, back_populates="favorites")
     now_playing_url = db.Column(db.String(500))
 
     def to_dict(self):
