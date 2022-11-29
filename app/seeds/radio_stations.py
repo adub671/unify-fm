@@ -4,11 +4,11 @@ from app.models import db, User, RadioStation, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_radio_stations():
     kiosk = RadioStation(
-        name='Kiosk Radio', admin_id=1, stream_url="https://kioskradiobxl.out.airtime.pro/kioskradiobxl_b", image_url="https://yt3.ggpht.com/ytc/AMLnZu_yB69zZxUW9guNKoN6WG5_URTPZRsmTIlfGRr_ug=s900-c-k-c0x00ffffff-no-rj", website_url="https://kioskradio.com/")
+        name='Kiosk Radio', admin_id=1, stream_url="https://kioskradiobxl.out.airtime.pro/kioskradiobxl_b", image_url="https://yt3.ggpht.com/ytc/AMLnZu_yB69zZxUW9guNKoN6WG5_URTPZRsmTIlfGRr_ug=s900-c-k-c0x00ffffff-no-rj", website_url="https://kioskradio.com/", now_playing_url="https://kioskradiobxl.airtime.pro/api/live-info-v2")
     ifmdisco = RadioStation(
-        name='Intergalactic FM: Disco Fetish', admin_id=1, stream_url="https://radio.intergalactic.fm/2", image_url="https://cdn-profiles.tunein.com/s99619/images/logog.png?t=152604", website_url="https://www.intergalactic.fm/channels/disco-fetish")
+        name='Intergalactic FM: Disco Fetish', admin_id=1, stream_url="https://radio.intergalactic.fm/2", image_url="https://cdn-profiles.tunein.com/s99619/images/logog.png?t=152604", website_url="https://www.intergalactic.fm/channels/disco-fetish", now_playing_url="https://www.intergalactic.fm/now-playing?channel=Disco%20Fetish")
     ifmcbs = RadioStation(
-        name='Intergalactic FM: Cybernetic BroadCasting System', admin_id=1, stream_url="https://radio.intergalactic.fm/1", image_url="https://cdn-profiles.tunein.com/s99619/images/logog.png?t=152604", website_url="https://static-media.streema.com/media/cache/05/ea/05eafaaa52fe52cc9f984b1989432b7c.jpg")
+        name='Intergalactic FM: Cybernetic BroadCasting System', admin_id=1, stream_url="https://radio.intergalactic.fm/1", image_url="https://cdn-profiles.tunein.com/s99619/images/logog.png?t=152604", website_url="https://static-media.streema.com/media/cache/05/ea/05eafaaa52fe52cc9f984b1989432b7c.jpg", now_playing_url="https://www.intergalactic.fm/now-playing?channel=Cybernetic%20Broadcasting%20System")
     refuge = RadioStation(
         name='Refuge WorldWide', admin_id=1, stream_url="https://streaming.radio.co/s3699c5e49/listen", image_url="https://refugeworldwide.com/og-thumb.jpg", website_url="https://refugeworldwide.com/", chat_url="https://refugeworldwide.com/chat", now_playing_url="https://public.radio.co/stations/s3699c5e49/status")
 

@@ -1,4 +1,4 @@
-export const nowPlayingParser = async (nowPlayingUrl, station) => {
+export const nowPlayingParser = async (nowPlayingUrl) => {
   const response = await fetch(nowPlayingUrl);
   const nowPlayingData = await response.json();
   let nowPlaying;

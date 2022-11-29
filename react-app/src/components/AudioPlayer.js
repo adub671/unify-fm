@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
-import { useDispatch } from "react-redux";
 import { AudioContext } from "../context/Audio";
 import { nowPlayingParser } from "../utils/nowPlayingParser";
 
 export default function AppAudioPlayer() {
-  const dispatch = useDispatch();
   const { currentStation } = useContext(AudioContext);
+  const [nowPlaying, setNowPlaying] = useState("");
 
   //   const onSongEnd = () => {
   //     setSong(songQueue[0]);
@@ -35,6 +34,13 @@ export default function AppAudioPlayer() {
   //   const clickPrev = () => {
   //     console.log("PREVIOUS CLICKED!!!!!!!!!");
   //   };
+
+  useEffect(() => {
+    (async () => {
+      const playing = await nowPlayingParser(currentStation.now_playing_url);
+      setNowPlaying(playing);
+    })();
+  }, [currentStation]);
 
   return (
     <div className="fixed-audio-container">
@@ -68,8 +74,8 @@ export default function AppAudioPlayer() {
             <>
               <div className="now-playing-image-container"></div>
               <div className="now-playing-title">
-                <span>{currentStation?.name}</span>
-                <div>{nowPlayingParser(currentStation?.now_playing_url)}</div>
+                <span>Current Station: {currentStation?.name}</span>
+                <div>Current Show: {nowPlaying}</div>
               </div>
             </>
           ) : (

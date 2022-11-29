@@ -10,7 +10,7 @@ const FavoriteButton = ({ station }) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
 
-  const [favorited, setFavorited] = useState(favorites.includes(station.id));
+  const [favorited, setFavorited] = useState(favorites.includes(station?.id));
 
   useEffect(() => {
     setFavorited(favorites.includes(station.id));

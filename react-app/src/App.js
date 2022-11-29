@@ -58,7 +58,6 @@ function App() {
       </Switch>
       <AllStations />
       <CreateStation />
-      <AudioPlayer src={audioUrl} />
       <AppAudioPlayer />
     </BrowserRouter>
   );
