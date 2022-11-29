@@ -18,6 +18,7 @@ const CreateStation = () => {
   const [additional_label_1, setLabel1] = useState("");
   const [additional_label_2, setLabel2] = useState("");
   const [additional_label_3, setLabel3] = useState("");
+  const [now_playing_url, setNowPlayingUrl] = useState("");
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -43,6 +44,7 @@ const CreateStation = () => {
       additional_label_1,
       additional_label_2,
       additional_label_3,
+      now_playing_url,
     };
     const response = await dispatch(newStation(payload));
     if (response.errors) {
@@ -108,6 +110,14 @@ const CreateStation = () => {
           <input
             onChange={(e) => {
               setCalendarUrl(e.target.value);
+            }}
+          />
+        </div>
+        <div>
+          <label>Calendar URL: </label>
+          <input
+            onChange={(e) => {
+              setNowPlayingUrl(e.target.value);
             }}
           />
         </div>

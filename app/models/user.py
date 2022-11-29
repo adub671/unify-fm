@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from .radio_station import favorites
+from .radio_station import favorites_table
 
 
 class User(db.Model, UserMixin):
@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     favorites = db.relationship(
-        "RadioStation", secondary=favorites, back_populates="favorited_by")
+        "RadioStation", secondary=favorites_table, back_populates="favorited_by")
     created_stations = db.relationship("RadioStation")
     favorited_order = db.Column(db.String())
 

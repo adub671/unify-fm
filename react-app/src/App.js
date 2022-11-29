@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
@@ -11,10 +11,16 @@ import { authenticate } from "./store/session";
 import AllStations from "./components/RadioStation/AllStations";
 import CreateStation from "./components/RadioStation/CreateStation";
 import FavoriteStations from "./components/RadioStation/FavoriteStations";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
+import { AudioContext } from "./context/Audio";
+import AppAudioPlayer from "./components/AudioPlayer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
+  const { audioUrl } = useContext(AudioContext);
 
   useEffect(() => {
     (async () => {
@@ -52,6 +58,7 @@ function App() {
       </Switch>
       <AllStations />
       <CreateStation />
+      <AppAudioPlayer />
     </BrowserRouter>
   );
 }
