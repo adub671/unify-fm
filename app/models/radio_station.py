@@ -12,6 +12,8 @@ favorites_table = db.Table(
               db.ForeignKey(add_prefix_for_prod('users.id')),
               primary_key=True)
 )
+if environment == "production":
+    favorites_table.schema = SCHEMA
 
 
 class RadioStation(db.Model):
