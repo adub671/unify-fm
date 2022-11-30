@@ -33,16 +33,15 @@ const FavoriteButton = ({ station }) => {
   };
 
   return (
-    <>
+    <div onClick={handleFavorite}>
       <i
         className={
           favorited
             ? "favorited-icon fa-solid fa-heart favorite-icon"
             : "not-favorited-icon fa-solid fa-heart favorite-icon"
         }
-        onClick={handleFavorite}
       ></i>
-    </>
+    </div>
   );
 };
 

@@ -3,20 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { AudioContext } from "../../context/Audio";
 import { getStations } from "../../store/radioStations";
+import DeleteStation from "../RadioStation/DeleteStation";
 import FavoriteButton from "../RadioStation/FavoriteButton";
+import User from "../User";
 import "./StationPage.css";
 
 const StationPage = () => {
   const dispatch = useDispatch();
-  const { setStation } = useContext(AudioContext);
-  const handlePlay = () => {
-    setStation(station.stream_url);
-  };
+  const { currentStation, setStation } = useContext(AudioContext);
   const [station, setPageStation] = useState({});
-
   const stations = useSelector((state) => state.stations);
-
+  const user = useSelector((state) => state.session.user);
   const { stationId } = useParams();
+  const [play, setPlay] = useState(false);
+
+  const handlePlay = () => {
+    setStation(station);
+    setPlay(true);
+  };
+
   useEffect(() => {
     (async () => {
       dispatch(getStations());
@@ -38,7 +43,12 @@ const StationPage = () => {
           className="station-page-play-button-container"
           onClick={handlePlay}
         >
-          <i class="fa-solid fa-play station-page-play-button"></i>
+          {" "}
+          {currentStation === station ? (
+            <i class="fa-solid fa-pause station-page-play-button"> </i>
+          ) : (
+            <i class="fa-solid fa-play station-page-play-button"></i>
+          )}
         </div>
       </div>
       <div className="station-page-station-name">{station?.name}</div>
@@ -53,20 +63,28 @@ const StationPage = () => {
         <i class="fa-solid fa-share station-page-link-icon"></i>
       </div>
       {/* <a href={station?.chat_url} target="_blank" rel="noreferrer"> */}
-      <div
-        onClick={() => {
-          window.open(station?.chat_url, "newwindow", "width=600,height=400");
-        }}
-        className="station-page-link"
-      >
-        <span className="station-page-link-label">Chat </span>
-        <i class="fas fa-comments station-page-link-icon"></i>
-      </div>
+      {station?.chat_url && (
+        <div
+          onClick={() => {
+            window.open(station?.chat_url, "newwindow", "width=600,height=400");
+          }}
+          className="station-page-link"
+        >
+          <span className="station-page-link-label">Chat </span>
+          <i class="fas fa-comments station-page-link-icon"></i>
+        </div>
+      )}
       {/* </a> */}
       <div className="station-page-link">
         <span className="station-page-link-label">Favorite </span>
         <FavoriteButton station={station} />
       </div>
+      {station?.admin_id === user?.id && (
+        <div className="station-page-link">
+          <span className="station-page-link-label">Delete </span>
+          <DeleteStation station={station} redirect={true} />
+        </div>
+      )}
     </>
   );
 };

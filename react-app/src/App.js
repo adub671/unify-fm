@@ -14,6 +14,7 @@ import AppAudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import AllStationsCarousel from "./components/RadioStation/AllStationsCarousel";
 import FavoriteStationsCarousel from "./components/RadioStation/FavoriteStationsCarousel";
 import StationPage from "./components/StationPage";
+import AllStations from "./components/RadioStation/AllStations";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,6 +55,9 @@ function App() {
         <ProtectedRoute path="/favorites" exact={true}>
           <FavoriteStations />
         </ProtectedRoute>
+        <Route path="/stations" exact={true}>
+          <AllStations />
+        </Route>
         <Route path="/station/:stationId" exact={true}>
           <StationPage />
         </Route>

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { AudioContext } from "../../context/Audio";
 import "./StationCard.css";
 
@@ -28,7 +29,9 @@ const StationCard = ({ station }) => {
             alt="station cards"
           />
         </div>
-        <div className="card-station-name">{station?.name}</div>
+        <NavLink to={`/station/${station?.id}`} exact={true}>
+          <div className="card-station-name">{station?.name}</div>
+        </NavLink>
       </div>
     </>
   );
