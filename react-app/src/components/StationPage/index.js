@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { AudioContext } from "../../context/Audio";
 import { getStations } from "../../store/radioStations";
+import { nowPlayingParser } from "../../utils/nowPlayingParser";
 import DeleteStation from "../RadioStation/DeleteStation";
+import EditStationButton from "../RadioStation/EditStationButton";
 import FavoriteButton from "../RadioStation/FavoriteButton";
 import User from "../User";
 import "./StationPage.css";
@@ -16,6 +18,7 @@ const StationPage = () => {
   const user = useSelector((state) => state.session.user);
   const { stationId } = useParams();
   const [play, setPlay] = useState(false);
+  const [nowPlaying, setNowPlaying] = useState("");
 
   const handlePlay = () => {
     setStation(station);
@@ -25,8 +28,11 @@ const StationPage = () => {
   useEffect(() => {
     (async () => {
       dispatch(getStations());
+      const playing = await nowPlayingParser(station.now_playing_url);
+      setNowPlaying(playing);
     })();
   }, [dispatch]);
+
   useEffect(() => {
     setPageStation(stations[stationId]);
   }, [stations]);
@@ -52,6 +58,7 @@ const StationPage = () => {
         </div>
       </div>
       <div className="station-page-station-name">{station?.name}</div>
+      <div> Now Playing: {nowPlaying}</div>
       <div
         className="station-page-link"
         onClick={() => {
@@ -83,6 +90,12 @@ const StationPage = () => {
         <div className="station-page-link">
           <span className="station-page-link-label">Delete </span>
           <DeleteStation station={station} redirect={true} />
+        </div>
+      )}
+      {station?.admin_id === user?.id && (
+        <div className="station-page-link">
+          <span className="station-page-link-label">Edit </span>
+          <EditStationButton station={station} />
         </div>
       )}
     </>

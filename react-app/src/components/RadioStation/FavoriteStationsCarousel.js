@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getStations } from "../../store/radioStations";
 import StationCard from "./StationCard";
 import "./Carousel.css";
+import { getFavoriteStations } from "../../store/favoriteStations";
 
 const FavoriteStationsCarousel = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const FavoriteStationsCarousel = () => {
   useEffect(() => {
     (async () => {
       await dispatch(getStations());
+      await dispatch(getFavoriteStations());
     })();
   }, [dispatch]);
 

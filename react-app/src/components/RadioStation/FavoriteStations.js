@@ -19,20 +19,19 @@ const FavoriteStations = () => {
 
   useEffect(() => {
     (async () => {
-      await dispatch(getFavoriteStations());
       await dispatch(getStations());
+      await dispatch(getFavoriteStations());
     })();
   }, [dispatch]);
 
   return (
     <>
-      <div>Favorite Stations</div>
+      <div className="carousel-title">Favorite Stations</div>
       <div>
         {faveStations?.map((faveStation) => (
           <StationCard station={faveStation} />
         ))}
       </div>
-      <div>END FAVE</div>
     </>
   );
 };
