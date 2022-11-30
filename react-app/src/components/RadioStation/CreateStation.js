@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { newStation } from "../../store/radioStations";
 
-const CreateStation = () => {
+const CreateStation = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState();
   const user = useSelector((state) => state.session.user);
@@ -50,6 +50,8 @@ const CreateStation = () => {
     if (response.errors) {
       const backendErrs = Object.entries(response.errors);
       setErrors(backendErrs);
+    } else {
+      setShowModal(false);
     }
   };
 

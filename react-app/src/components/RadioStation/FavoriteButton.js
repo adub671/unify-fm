@@ -13,7 +13,7 @@ const FavoriteButton = ({ station }) => {
   const [favorited, setFavorited] = useState(favorites.includes(station?.id));
 
   useEffect(() => {
-    setFavorited(favorites.includes(station.id));
+    setFavorited(favorites.includes(station?.id));
   }, [station, favorites]);
 
   useEffect(() => {

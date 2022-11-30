@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
@@ -8,19 +8,16 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
-import AllStations from "./components/RadioStation/AllStations";
-import CreateStation from "./components/RadioStation/CreateStation";
 import FavoriteStations from "./components/RadioStation/FavoriteStations";
-import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-import { AudioContext } from "./context/Audio";
-import AppAudioPlayer from "./components/AudioPlayer";
+import AppAudioPlayer from "./components/AudioPlayer/AudioPlayer";
+import AllStationsCarousel from "./components/RadioStation/AllStationsCarousel";
+import FavoriteStationsCarousel from "./components/RadioStation/FavoriteStationsCarousel";
+import StationPage from "./components/StationPage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-
-  const { audioUrl } = useContext(AudioContext);
 
   useEffect(() => {
     (async () => {
@@ -51,13 +48,16 @@ function App() {
         </ProtectedRoute>
         <Route path="/" exact={true}>
           <h1>UNIFY FM</h1>
+          <AllStationsCarousel />
+          <FavoriteStationsCarousel />
         </Route>
-        <Route path="/favorites" exact={true}>
+        <ProtectedRoute path="/favorites" exact={true}>
           <FavoriteStations />
+        </ProtectedRoute>
+        <Route path="/station/:stationId" exact={true}>
+          <StationPage />
         </Route>
       </Switch>
-      <AllStations />
-      <CreateStation />
       <AppAudioPlayer />
     </BrowserRouter>
   );
