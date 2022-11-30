@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { AudioContext } from "../../context/Audio";
 import { editStation } from "../../store/radioStations";
 
-const EditStation = ({ station }) => {
+const EditStation = ({ station, setShowModal }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
 
@@ -19,6 +20,7 @@ const EditStation = ({ station }) => {
   const [additional_label_2, setLabel2] = useState(station?.additional_label_2);
   const [additional_label_3, setLabel3] = useState(station?.additional_label_3);
   const [errors, setErrors] = useState([]);
+  const { setStation, currentStation } = useContext(AudioContext);
 
   useEffect(() => {
     setName(station?.name);
@@ -59,6 +61,11 @@ const EditStation = ({ station }) => {
     if (response.errors) {
       const backendErrs = Object.entries(response.errors);
       setErrors(backendErrs);
+    } else {
+      setShowModal(false);
+    }
+    if (station.id === currentStation.id) {
+      setStation(response);
     }
   };
 

@@ -28,10 +28,15 @@ const StationPage = () => {
   useEffect(() => {
     (async () => {
       dispatch(getStations());
-      const playing = await nowPlayingParser(station.now_playing_url);
-      setNowPlaying(playing);
     })();
   }, [dispatch]);
+
+  useEffect(() => {
+    (async () => {
+      const playing = await nowPlayingParser(station?.now_playing_url);
+      setNowPlaying(playing);
+    })();
+  }, [station]);
 
   useEffect(() => {
     setPageStation(stations[stationId]);
@@ -58,7 +63,7 @@ const StationPage = () => {
         </div>
       </div>
       <div className="station-page-station-name">{station?.name}</div>
-      <div> Now Playing: {nowPlaying}</div>
+      {nowPlaying.length > 0 && <div> Now Playing: {nowPlaying}</div>}
       <div
         className="station-page-link"
         onClick={() => {
