@@ -103,6 +103,44 @@ const StationPage = () => {
           <EditStationButton station={station} />
         </div>
       )}
+      {station?.website_url && (
+        <a href={station?.website_url}>
+          <div className="station-page-link">
+            <span className="station-page-link-label">Website </span>
+            <i class="fa-solid fa-globe station-page-link-icon"></i>
+          </div>
+        </a>
+      )}
+      {station?.additional_link_1 && (
+        <a href={station?.additional_link_1}>
+          <div className="station-page-link">
+            <span className="station-page-link-label">
+              {station?.additional_label_1}{" "}
+            </span>
+            <i class="fa-solid fa-link station-page-link-icon"></i>
+          </div>
+        </a>
+      )}
+      {station?.additional_link_2 && (
+        <a href={station?.additional_link_2}>
+          <div className="station-page-link">
+            <span className="station-page-link-label">
+              {station?.additional_label_2}{" "}
+            </span>
+            <i class="fa-solid fa-link station-page-link-icon"></i>
+          </div>
+        </a>
+      )}
+      {station?.additional_link_3 && (
+        <a href={station?.additional_link_3}>
+          <div className="station-page-link">
+            <span className="station-page-link-label">
+              {station?.additional_label_3}{" "}
+            </span>
+            <i class="fa-solid fa-link station-page-link-icon"></i>
+          </div>
+        </a>
+      )}
     </>
   );
 };

@@ -83,7 +83,7 @@ def update_station(station_id):
             station.additional_link_1 = data['additional_link_1']
             station.additional_link_2 = data['additional_link_2']
             station.additional_link_3 = data['additional_link_2']
-            station.additional_label_1 = data['additional_label_2']
+            station.additional_label_1 = data['additional_label_1']
             station.additional_label_2 = data['additional_label_2']
             station.additional_label_3 = data['additional_label_3']
             db.session.add(station)

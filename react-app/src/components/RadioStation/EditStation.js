@@ -67,6 +67,8 @@ const EditStation = ({ station, setShowModal }) => {
     if (station.id === currentStation.id) {
       setStation(response);
     }
+    console.log(payload, "payload");
+    console.log(response, "response");
   };
 
   return (
