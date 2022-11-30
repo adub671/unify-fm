@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStations } from "../../store/radioStations";
-import FavoriteButton from "./FavoriteButton";
 import StationCard from "./StationCard";
+import "./Carousel.css";
+import CreateStationButton from "./CreateStationButton";
 
-const AllStations = () => {
+const AllStationsCarousel = () => {
   const dispatch = useDispatch();
   const stations = useSelector((state) => state.stations);
 
@@ -16,18 +17,17 @@ const AllStations = () => {
 
   return (
     <>
-      <div>Stations</div>
-      <div>
+      <div className="carousel-banner">
+        All Stations <CreateStationButton />
+      </div>
+      <div className="carousel-container">
         {stations &&
           Object.values(stations)?.map((station) => (
-            <>
-              <StationCard station={station} />
-              <FavoriteButton station={station} />
-            </>
+            <StationCard station={station} />
           ))}
       </div>
     </>
   );
 };
 
-export default AllStations;
+export default AllStationsCarousel;

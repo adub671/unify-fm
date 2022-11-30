@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
-import { AudioContext } from "../context/Audio";
-import { nowPlayingParser } from "../utils/nowPlayingParser";
+import { AudioContext } from "../../context/Audio";
+import { nowPlayingParser } from "../../utils/nowPlayingParser";
+import "./AudioPlayer.css";
 
 export default function AppAudioPlayer() {
   const { currentStation } = useContext(AudioContext);

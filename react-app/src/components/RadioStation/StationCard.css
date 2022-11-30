@@ -3,9 +3,43 @@
 }
 
 .station-card-image {
-  height: 100px;
+  height: 200px;
+  width: 200px;
 }
 
 .favorite-icon {
   margin-left: 10px;
+}
+
+.card-station-name {
+  width: 200px;
+  text-align: center;
+}
+
+.station-card-container {
+  margin: 10px;
+}
+
+.station-card-image-play-pause {
+  font-size: 50px;
+  color: black;
+}
+
+.station-card-image-play-container {
+  display: flex;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 137.5px;
+  left: 62.5px;
+  background-color: white;
+  width: 75px;
+  height: 75px;
+  border-radius: 100px;
+  transition: opacity 1s;
+}
+
+.station-card-image-container:hover .station-card-image-play-container {
+  opacity: 0.9;
 }

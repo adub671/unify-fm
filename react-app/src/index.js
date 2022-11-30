@@ -11,13 +11,13 @@ const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <AudioProvider>
-      <ModalProvider>
-        <Provider store={store}>
+    <Provider store={store}>
+      <AudioProvider>
+        <ModalProvider>
           <App />
-        </Provider>
-      </ModalProvider>
-    </AudioProvider>
+        </ModalProvider>
+      </AudioProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

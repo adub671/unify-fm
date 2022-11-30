@@ -1,0 +1,16 @@
+.carousel-container {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  overflow-x: scroll;
+}
+
+.carousel-banner {
+  background-color: blue;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
