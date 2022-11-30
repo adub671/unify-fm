@@ -1,11 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
+import { useSelector } from "react-redux";
 import { AudioContext } from "../../context/Audio";
 import { nowPlayingParser } from "../../utils/nowPlayingParser";
 import "./AudioPlayer.css";
 
 export default function AppAudioPlayer() {
-  const { currentStation } = useContext(AudioContext);
+  const {
+    currentStation,
+    setStation,
+    stationQueue,
+    setQueuePosition,
+    queuePosition,
+  } = useContext(AudioContext);
+  const stations = useSelector((state) => state.stations);
   const [nowPlaying, setNowPlaying] = useState("");
 
   //   const onSongEnd = () => {
@@ -21,20 +29,32 @@ export default function AppAudioPlayer() {
   //     newQueue.splice(songInPlaylistIndex, 1);
   //     setSongQueue(newQueue);
   //   };
+  console.log(stations);
 
-  //   const clickNext = () => {
-  //     const nextSong = songQueue[0];
-  //     if (nextSong) {
-  //       const newQueue = [...songQueue];
-  //       newQueue.shift();
-  //       setSong(nextSong);
-  //       setSongQueue(newQueue);
-  //     } else alert("No More Songs In Queue!");
-  //   };
+  const clickNext = () => {
+    let newQueuePosition;
+    if (stationQueue.length - 1 === queuePosition) {
+      newQueuePosition = 0;
+    } else {
+      newQueuePosition = queuePosition + 1;
+    }
+    setQueuePosition(newQueuePosition);
+    const nextStation = stations[stationQueue[newQueuePosition]];
+    setStation(nextStation);
+  };
 
-  //   const clickPrev = () => {
-  //     console.log("PREVIOUS CLICKED!!!!!!!!!");
-  //   };
+  const clickPrev = () => {
+    let newQueuePosition;
+    console.log(queuePosition, "PREVCLICKED");
+    if (queuePosition === 0) {
+      newQueuePosition = stationQueue.length - 1;
+    } else {
+      newQueuePosition = queuePosition - 1;
+    }
+    setQueuePosition(newQueuePosition);
+    const nextStation = stations[stationQueue[newQueuePosition]];
+    setStation(nextStation);
+  };
 
   useEffect(() => {
     (async () => {
@@ -58,16 +78,12 @@ export default function AppAudioPlayer() {
             // onPause={() => {
             //   setPlaying(false);
             // }}
-            // onEnded={onSongEnd}
+
             // ref={player}
-            // showSkipControls={true}
-            // showJumpControls={false}
-            // onClickNext={() => {
-            //   clickNext();
-            // }}
-            // onClickPrevious={() => {
-            //   clickPrev();
-            // }}
+            showSkipControls={true}
+            showJumpControls={false}
+            onClickNext={clickNext}
+            onClickPrevious={clickPrev}
           />
         </div>
         <div className="now-playing-container">
