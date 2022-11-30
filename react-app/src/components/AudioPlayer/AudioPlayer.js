@@ -38,7 +38,7 @@ export default function AppAudioPlayer() {
 
   useEffect(() => {
     (async () => {
-      const playing = await nowPlayingParser(currentStation.now_playing_url);
+      const playing = await nowPlayingParser(currentStation?.now_playing_url);
       setNowPlaying(playing);
     })();
   }, [currentStation]);

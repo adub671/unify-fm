@@ -20,6 +20,9 @@ export const nowPlayingParser = async (nowPlayingUrl) => {
       if (nowPlayingUrl.startsWith("https://azuracast")) {
         nowPlaying = nowPlayingData.now_playing.song.text;
       }
+      if (nowPlayingUrl.startsWith("https://www.nts.live/")) {
+        nowPlaying = nowPlayingData.results[0].now.broadcast_title;
+      }
     } else {
       nowPlaying = "Now Playing Info Not Found";
     }
