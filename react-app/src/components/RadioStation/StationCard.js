@@ -28,7 +28,6 @@ const StationCard = ({ station, favorite }) => {
             const index = stationsArr.indexOf(station?.id.toString());
             setStationQueue(stationsArr);
             setQueuePosition(index);
-            console.log(stationsArr, index, "stations Array");
           }
         }}
       >
