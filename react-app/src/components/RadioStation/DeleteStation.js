@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { deleteStation } from "../../store/radioStations";
 
 const DeleteStation = ({ station }) => {
   const dispatch = useDispatch();
-  const [redirect, setRedirect] = useState(false);
+  const history = useHistory();
+
   const handleDelete = async () => {
     await dispatch(deleteStation(station));
-    setRedirect(true);
+    history.push("/stations");
   };
-  if (redirect) {
-    return <Redirect to="/stations" />;
-  }
 
   return (
     <>

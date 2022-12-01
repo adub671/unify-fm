@@ -1,1 +1,29 @@
-/* TODO Add site wide styles */
+.page-container {
+  width: 80vw;
+  margin: auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.bottom-spacer {
+  height: 200px;
+  background-color: white;
+  width: 80vw;
+  margin: auto;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  color: gray;
+}

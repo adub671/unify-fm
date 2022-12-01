@@ -6,8 +6,10 @@ export default function AudioProvider({ children }) {
   const [currentStation, setStation] = useState({});
   const [stationQueue, setStationQueue] = useState([]);
   const [queuePosition, setQueuePosition] = useState();
-  const [playing, setPlaying] = useState(false);
+  const [isPlaying, setPlaying] = useState(false);
   const player = useRef();
+
+  console.log(isPlaying, "isPlaying in audio context");
 
   return (
     <>
@@ -20,7 +22,7 @@ export default function AudioProvider({ children }) {
           setStationQueue,
           queuePosition,
           setQueuePosition,
-          playing,
+          isPlaying,
           setPlaying,
         }}
       >

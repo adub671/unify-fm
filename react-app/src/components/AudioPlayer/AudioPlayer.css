@@ -1,5 +1,6 @@
 .fixed-audio-container {
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
   width: 100vw;
+  bottom: 0px;
+  background-color: blue;
 }

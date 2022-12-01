@@ -13,7 +13,7 @@ def seed_radio_stations():
         name='Refuge WorldWide', admin_id=1, stream_url="https://streaming.radio.co/s3699c5e49/listen", image_url="https://refugeworldwide.com/og-thumb.jpg", website_url="https://refugeworldwide.com/", chat_url="https://refugeworldwide.com/chat", now_playing_url="https://public.radio.co/stations/s3699c5e49/status")
 
     particle = RadioStation(
-        name='Particle FM', admin_id=2, stream_url="https://azuracast.particle.fm/radio/8000/radio.mp3", image_url="https://i1.sndcdn.com/avatars-oEn7XKE76IZpyoKB-ANzgWg-t500x500.jpg", website_url="https://particle.fm/", chat_url="https://particle.fm/chat.htm", now_playing_url="https://azuracast.particle.fm/api/nowplaying/1")
+        name='Particle FM', admin_id=2, stream_url="https://azuracast.particle.fm/radio/8000/radio.mp3", image_url="https://i1.sndcdn.com/avatars-oEn7XKE76IZpyoKB-ANzgWg-t500x500.jpg", website_url="https://particle.fm/", chat_url="https://particle.fm/chat.html", now_playing_url="https://azuracast.particle.fm/api/nowplaying/1")
 
     nts1 = RadioStation(
         name='NTS 1', admin_id=1, stream_url="https://stream-relay-geo.ntslive.net/stream?client=NTSWebApp&t=1669765344306", image_url="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/NTS_Radio_logo.svg/1280px-NTS_Radio_logo.svg.png", website_url="https://www.nts.live", chat_url="https://www.nts.live/chat/1", now_playing_url="https://www.nts.live/api/v2/live")

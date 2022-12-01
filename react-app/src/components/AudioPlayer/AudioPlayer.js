@@ -12,24 +12,12 @@ export default function AppAudioPlayer() {
     stationQueue,
     setQueuePosition,
     queuePosition,
+    setPlaying,
+    isPlaying,
+    player,
   } = useContext(AudioContext);
   const stations = useSelector((state) => state.stations);
   const [nowPlaying, setNowPlaying] = useState("");
-
-  //   const onSongEnd = () => {
-  //     setSong(songQueue[0]);
-  //     const newQueue = [...songQueue];
-  //     newQueue.shift();
-  //     setSongQueue(newQueue);
-  //   };
-
-  //   const deleteFromQueue = (song) => {
-  //     const songInPlaylistIndex = songQueue.indexOf(song);
-  //     const newQueue = [...songQueue];
-  //     newQueue.splice(songInPlaylistIndex, 1);
-  //     setSongQueue(newQueue);
-  //   };
-  console.log(stations);
 
   const clickNext = () => {
     let newQueuePosition;
@@ -45,7 +33,7 @@ export default function AppAudioPlayer() {
 
   const clickPrev = () => {
     let newQueuePosition;
-    console.log(queuePosition, "PREVCLICKED");
+
     if (queuePosition === 0) {
       newQueuePosition = stationQueue.length - 1;
     } else {
@@ -71,15 +59,18 @@ export default function AppAudioPlayer() {
           <AudioPlayer
             autoPlay
             src={currentStation?.stream_url}
-            // onPlay={() => {
-            //   setPlaying(true);
-            //   console.log(currentSong.name, "is playing");
-            // }}
-            // onPause={() => {
-            //   setPlaying(false);
-            // }}
-
-            // ref={player}
+            onPlay={() => {
+              setPlaying(true);
+              console.log(
+                "You Are Listening To ",
+                currentStation?.name,
+                "Enjoy <3 -ADUB"
+              );
+            }}
+            onPause={() => {
+              setPlaying(false);
+            }}
+            ref={player}
             showSkipControls={true}
             showJumpControls={false}
             onClickNext={clickNext}

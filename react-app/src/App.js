@@ -14,8 +14,8 @@ import AppAudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import AllStationsCarousel from "./components/RadioStation/AllStationsCarousel";
 import FavoriteStationsCarousel from "./components/RadioStation/FavoriteStationsCarousel";
 import StationPage from "./components/StationPage";
-import AllStations from "./components/RadioStation/AllStations";
-import { getFavoriteStations } from "./store/favoriteStations";
+import AllStations from "./components/AllStations/AllStations";
+import "./index.css";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,34 +35,31 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-        </ProtectedRoute>
-        <Route path="/" exact={true}>
-          <h1>UNIFY FM</h1>
-          <AllStationsCarousel />
-          <FavoriteStationsCarousel />
-        </Route>
-        <ProtectedRoute path="/favorites" exact={true}>
-          <FavoriteStations />
-        </ProtectedRoute>
-        <Route path="/stations" exact={true}>
-          <AllStations />
-        </Route>
-        <Route path="/station/:stationId" exact={true}>
-          <StationPage />
-        </Route>
-      </Switch>
+      <div className="page-container">
+        <Switch>
+          <ProtectedRoute path="/users" exact={true}>
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId" exact={true}>
+            <User />
+          </ProtectedRoute>
+          <Route path="/" exact={true}>
+            <h1>UNIFY FM</h1>
+            <AllStationsCarousel />
+            <FavoriteStationsCarousel />
+          </Route>
+          <ProtectedRoute path="/favorites" exact={true}>
+            <FavoriteStations />
+          </ProtectedRoute>
+          <Route path="/stations" exact={true}>
+            <AllStations />
+          </Route>
+          <Route path="/station/:stationId" exact={true}>
+            <StationPage />
+          </Route>
+        </Switch>
+      </div>
+      <div className="bottom-spacer"></div>
       <AppAudioPlayer />
     </BrowserRouter>
   );
