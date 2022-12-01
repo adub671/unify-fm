@@ -3,8 +3,8 @@
 }
 
 .all-stations-card-image {
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
 }
 
 .favorite-icon {
@@ -12,14 +12,14 @@
 }
 
 .all-stations-card-name {
-  width: 400px;
+  width: 300px;
   font-size: 20px;
   text-align: center;
 }
 
 .all-stations-card-container {
-  margin: 10px;
   width: max-content;
+  height: 450px;
 }
 
 .all-stations-card-image-play-pause {
@@ -33,8 +33,8 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  top: 137.5px;
-  left: 62.5px;
+  top: 187.5px;
+  left: 112.5px;
   background-color: white;
   width: 75px;
   height: 75px;
@@ -46,12 +46,14 @@
   .all-stations-card-image-play-container {
   opacity: 0.9;
 }
+.all-stations-card-image-container {
+  margin-top: -79px;
+}
 
 .all-stations-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 80vw;
-  margin: auto;
+  grid-template-columns: 300px 300px 300px;
+  grid-column-gap: 100px;
 }
 
 .all-stations-button-container {
@@ -70,6 +72,7 @@ a {
 
 .all-stations-now-playing-container {
   font-size: 20px;
+  width: 300px;
 }
 
 .all-stations-title {
@@ -78,5 +81,6 @@ a {
   font-size: 40px;
 }
 
-.all-stations-container {
+.all-stations-positioning-container {
+  margin: auto;
 }

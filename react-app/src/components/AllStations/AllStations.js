@@ -15,14 +15,16 @@ const AllStations = () => {
 
   return (
     <>
-      <div className="all-stations-title">All Radio Stations</div>
-      <div className="all-stations-container">
-        {stations &&
-          Object.values(stations)?.map((station) => (
-            <>
-              <AllStationsCard station={station} />
-            </>
-          ))}
+      <div className="all-stations-positioning-container">
+        <div className="all-stations-title">All Radio Stations</div>
+        <div className="all-stations-container">
+          {stations &&
+            Object.values(stations)?.map((station) => (
+              <>
+                <AllStationsCard station={station} />
+              </>
+            ))}
+        </div>
       </div>
     </>
   );

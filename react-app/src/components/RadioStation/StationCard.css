@@ -43,3 +43,10 @@
 .station-card-image-container:hover .station-card-image-play-container {
   opacity: 0.9;
 }
+
+.station-card-image-container {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  margin-top: -79px;
+}
