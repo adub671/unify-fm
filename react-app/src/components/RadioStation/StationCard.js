@@ -9,6 +9,7 @@ const StationCard = ({ station, favorite }) => {
     useContext(AudioContext);
   const [play, setPlay] = useState(false);
   const favorites = useSelector((state) => state.favorites);
+  const stations = useSelector((state) => state.stations);
 
   return (
     <>
@@ -20,9 +21,14 @@ const StationCard = ({ station, favorite }) => {
 
           if (favorite) {
             const index = favorites.indexOf(station?.id);
-            console.log(index, typeof index, "index");
             setStationQueue(favorites);
             setQueuePosition(index);
+          } else {
+            const stationsArr = Object.keys(stations);
+            const index = stationsArr.indexOf(station?.id.toString());
+            setStationQueue(stationsArr);
+            setQueuePosition(index);
+            console.log(stationsArr, index, "stations Array");
           }
         }}
       >
