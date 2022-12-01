@@ -1,0 +1,82 @@
+.favorited-icon {
+  color: red;
+}
+
+.all-stations-card-image {
+  height: 400px;
+  width: 400px;
+}
+
+.favorite-icon {
+  margin-left: 10px;
+}
+
+.all-stations-card-name {
+  width: 400px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.all-stations-card-container {
+  margin: 10px;
+  width: max-content;
+}
+
+.all-stations-card-image-play-pause {
+  font-size: 50px;
+  color: black;
+}
+
+.all-stations-card-image-play-container {
+  display: flex;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 137.5px;
+  left: 62.5px;
+  background-color: white;
+  width: 75px;
+  height: 75px;
+  border-radius: 100px;
+  transition: opacity 1s;
+}
+
+.all-stations-card-image-container:hover
+  .all-stations-card-image-play-container {
+  opacity: 0.9;
+}
+
+.all-stations-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 80vw;
+  margin: auto;
+}
+
+.all-stations-button-container {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+}
+.all-stations-button-container > div {
+  margin: 5px 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.all-stations-now-playing-container {
+  font-size: 20px;
+}
+
+.all-stations-title {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 40px;
+}
+
+.all-stations-container {
+}

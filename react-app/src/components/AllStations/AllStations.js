@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStations } from "../../store/radioStations";
-import FavoriteButton from "./FavoriteButton";
-import StationCard from "./StationCard";
+import AllStationsCard from "./AllStationsCard";
 
 const AllStations = () => {
   const dispatch = useDispatch();
@@ -16,13 +15,12 @@ const AllStations = () => {
 
   return (
     <>
-      <div>Stations</div>
-      <div>
+      <div className="all-stations-title">All Radio Stations</div>
+      <div className="all-stations-container">
         {stations &&
           Object.values(stations)?.map((station) => (
             <>
-              <StationCard station={station} />
-              <FavoriteButton station={station} />
+              <AllStationsCard station={station} />
             </>
           ))}
       </div>
