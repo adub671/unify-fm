@@ -6,11 +6,11 @@ import {
   newFavorite,
 } from "../../store/favoriteStations";
 
-const FavoriteButton = ({ station }) => {
+const FavoriteButton = ({ station, isButton }) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
-
   const [favorited, setFavorited] = useState(favorites.includes(station?.id));
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     setFavorited(favorites.includes(station?.id));
@@ -23,25 +23,44 @@ const FavoriteButton = ({ station }) => {
   }, [dispatch]);
 
   const handleFavorite = async () => {
-    if (favorited) {
-      await dispatch(deleteFavorite(station));
-      await dispatch(getFavoriteStations());
+    if (user) {
+      if (favorited) {
+        await dispatch(deleteFavorite(station));
+        await dispatch(getFavoriteStations());
+      } else {
+        await dispatch(newFavorite(station));
+        await dispatch(getFavoriteStations());
+      }
     } else {
-      await dispatch(newFavorite(station));
-      await dispatch(getFavoriteStations());
+      alert("Must Be Logged In To Favorite");
     }
   };
 
   return (
-    <div onClick={handleFavorite}>
-      <i
-        className={
-          favorited
-            ? "favorited-icon fa-solid fa-heart favorite-icon"
-            : "not-favorited-icon fa-solid fa-heart favorite-icon"
-        }
-      ></i>
-    </div>
+    <>
+      {isButton ? (
+        <div onClick={handleFavorite} className="station-page-link">
+          <span>Favorite </span>
+          <i
+            className={
+              favorited
+                ? "favorited-icon fa-solid fa-heart favorite-icon"
+                : "not-favorited-icon fa-solid fa-heart favorite-icon"
+            }
+          ></i>
+        </div>
+      ) : (
+        <div onClick={handleFavorite}>
+          <i
+            className={
+              favorited
+                ? "favorited-icon fa-solid fa-heart favorite-icon"
+                : "not-favorited-icon fa-solid fa-heart favorite-icon"
+            }
+          ></i>
+        </div>
+      )}
+    </>
   );
 };
 

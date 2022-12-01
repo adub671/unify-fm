@@ -87,10 +87,9 @@ const StationPage = () => {
         </div>
       )}
       {/* </a> */}
-      <div className="station-page-link">
-        <span className="station-page-link-label">Favorite </span>
-        <FavoriteButton station={station} />
-      </div>
+
+      <FavoriteButton station={station} isButton={true} />
+
       {station?.admin_id === user?.id && (
         <div className="station-page-link">
           <span className="station-page-link-label">Delete </span>
