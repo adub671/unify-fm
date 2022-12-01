@@ -1,13 +1,13 @@
 .page-container {
   width: 80vw;
   margin: auto;
-  background-color: yellow;
+  background-color: white;
   display: flex;
   flex-direction: column;
 }
 
 #root {
-  background-color: brown;
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -15,7 +15,15 @@
 
 .bottom-spacer {
   height: 200px;
-  background-color: yellow;
+  background-color: white;
   width: 80vw;
   margin: auto;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  color: gray;
 }

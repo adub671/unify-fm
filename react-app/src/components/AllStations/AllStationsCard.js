@@ -8,8 +8,14 @@ import FavoriteButton from "../RadioStation/FavoriteButton";
 import "./AllStationsCard.css";
 
 const AllStationsCard = ({ station, favorite }) => {
-  const { setStation, setStationQueue, setQueuePosition } =
-    useContext(AudioContext);
+  const {
+    currentStation,
+    setStation,
+    setStationQueue,
+    setQueuePosition,
+    isPlaying,
+    player,
+  } = useContext(AudioContext);
   const [play, setPlay] = useState(false);
   const favorites = useSelector((state) => state.favorites);
   const stations = useSelector((state) => state.stations);
@@ -22,26 +28,48 @@ const AllStationsCard = ({ station, favorite }) => {
   }, [station]);
 
   const playStation = () => {
-    setStation(station);
-    setPlay(true);
+    if (!play) {
+      setStation(station);
+      setPlay(true);
 
-    if (favorite) {
-      const index = favorites.indexOf(station?.id);
-      setStationQueue(favorites);
-      setQueuePosition(index);
+      if (favorite) {
+        const index = favorites.indexOf(station?.id);
+        setStationQueue(favorites);
+        setQueuePosition(index);
+      } else {
+        const stationsArr = Object.keys(stations);
+        const index = stationsArr.indexOf(station?.id.toString());
+        setStationQueue(stationsArr);
+        setQueuePosition(index);
+      }
+      player.current.audio.current.play();
     } else {
-      const stationsArr = Object.keys(stations);
-      const index = stationsArr.indexOf(station?.id.toString());
-      setStationQueue(stationsArr);
-      setQueuePosition(index);
+      player.current.audio.current.pause();
     }
   };
 
+  //*Determines Play or Pause Image For the Card
+  //Determines Play or Pause Image For the Card
+  useEffect(() => {
+    if (currentStation === station) {
+      if (isPlaying) {
+        setPlay(true);
+      } else {
+        setPlay(false);
+      }
+    } else {
+      setPlay(false);
+    }
+  }, [currentStation, isPlaying]);
+
   return (
     <>
-      <div className="all-stations-card-container" onClick={playStation}>
+      <div className="all-stations-card-container">
         <div className="all-stations-card-image-container">
-          <div className="all-stations-card-image-play-container">
+          <div
+            className="all-stations-card-image-play-container"
+            onClick={playStation}
+          >
             {play === true ? (
               <i class="fa-solid fa-pause all-stations-card-image-play-pause">
                 {" "}
@@ -51,9 +79,10 @@ const AllStationsCard = ({ station, favorite }) => {
             )}
           </div>
           <img
-            className="all-stations-card-image"
+            className="all-stations-card-image "
             src={station?.image_url}
             alt="station cards"
+            onClick={playStation}
           />
         </div>
         <NavLink to={`/station/${station?.id}`} exact={true}>
