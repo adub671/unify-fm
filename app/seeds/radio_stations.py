@@ -15,11 +15,15 @@ def seed_radio_stations():
     particle = RadioStation(
         name='Particle FM', admin_id=2, stream_url="https://azuracast.particle.fm/radio/8000/radio.mp3", image_url="https://i1.sndcdn.com/avatars-oEn7XKE76IZpyoKB-ANzgWg-t500x500.jpg", website_url="https://particle.fm/", chat_url="https://particle.fm/chat.htm", now_playing_url="https://azuracast.particle.fm/api/nowplaying/1")
 
+    nts1 = RadioStation(
+        name='NTS 1', admin_id=1, stream_url="https://stream-relay-geo.ntslive.net/stream?client=NTSWebApp&t=1669765344306", image_url="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/NTS_Radio_logo.svg/1280px-NTS_Radio_logo.svg.png", website_url="https://www.nts.live", chat_url="https://www.nts.live/chat/1", now_playing_url="https://www.nts.live/api/v2/live")
+
     db.session.add(kiosk)
     db.session.add(ifmdisco)
     db.session.add(ifmcbs)
     db.session.add(refuge)
     db.session.add(particle)
+    db.session.add(nts1)
     db.session.commit()
 
 

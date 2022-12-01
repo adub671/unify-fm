@@ -33,7 +33,9 @@ const FavoriteStationsCarousel = () => {
           <div className="carousel-banner">Favorite Stations</div>
           <div className="carousel-container">
             {stations &&
-              faveStations?.map((station) => <StationCard station={station} />)}
+              faveStations?.map((station) => (
+                <StationCard station={station} favorite={true} />
+              ))}
           </div>
         </div>
       )}

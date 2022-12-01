@@ -1,11 +1,16 @@
 import React, { useContext, useState } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { AudioContext } from "../../context/Audio";
 import "./StationCard.css";
 
-const StationCard = ({ station }) => {
-  const { setStation } = useContext(AudioContext);
+const StationCard = ({ station, favorite }) => {
+  const { setStation, setStationQueue, setQueuePosition } =
+    useContext(AudioContext);
   const [play, setPlay] = useState(false);
+  const favorites = useSelector((state) => state.favorites);
+  const stations = useSelector((state) => state.stations);
+
   return (
     <>
       <div
@@ -13,6 +18,18 @@ const StationCard = ({ station }) => {
         onClick={() => {
           setStation(station);
           setPlay(true);
+
+          if (favorite) {
+            const index = favorites.indexOf(station?.id);
+            setStationQueue(favorites);
+            setQueuePosition(index);
+          } else {
+            const stationsArr = Object.keys(stations);
+            const index = stationsArr.indexOf(station?.id.toString());
+            setStationQueue(stationsArr);
+            setQueuePosition(index);
+            console.log(stationsArr, index, "stations Array");
+          }
         }}
       >
         <div className="station-card-image-container">
