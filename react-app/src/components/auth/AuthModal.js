@@ -8,7 +8,7 @@ function AuthModal({ isLogin }) {
   const [login, setLogin] = useState(isLogin);
   return (
     <div>
-      {login ? (
+      {isLogin ? (
         <div
           className="auth-modal-log-in nav-link"
           onClick={() => {
