@@ -12,7 +12,8 @@ import "./StationPage.css";
 
 const StationPage = () => {
   const dispatch = useDispatch();
-  const { currentStation, setStation } = useContext(AudioContext);
+  const { currentStation, setStation, isPlaying, player } =
+    useContext(AudioContext);
   const [station, setPageStation] = useState({});
   const stations = useSelector((state) => state.stations);
   const user = useSelector((state) => state.session.user);
@@ -22,7 +23,13 @@ const StationPage = () => {
 
   const handlePlay = () => {
     setStation(station);
-    setPlay(true);
+    if (!play) {
+      setPlay(true);
+      player.current.audio.current.play();
+    } else {
+      setPlay(false);
+      player.current.audio.current.pause();
+    }
   };
 
   useEffect(() => {
@@ -42,6 +49,19 @@ const StationPage = () => {
     setPageStation(stations[stationId]);
   }, [stations]);
 
+  //Determines Play or Pause Image For the Card
+  useEffect(() => {
+    if (currentStation === station) {
+      if (isPlaying) {
+        setPlay(true);
+      } else {
+        setPlay(false);
+      }
+    } else {
+      setPlay(false);
+    }
+  }, [currentStation, isPlaying]);
+
   return (
     <>
       <div>
@@ -55,7 +75,7 @@ const StationPage = () => {
           onClick={handlePlay}
         >
           {" "}
-          {currentStation === station ? (
+          {play ? (
             <i className="fa-solid fa-pause station-page-play-button"> </i>
           ) : (
             <i className="fa-solid fa-play station-page-play-button"></i>

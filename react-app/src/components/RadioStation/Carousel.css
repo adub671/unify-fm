@@ -3,7 +3,7 @@
   flex-direction: row;
   width: 90%;
   overflow-x: scroll;
-  margin: auto;
+  margin-inline: auto;
 }
 
 .carousel-banner {

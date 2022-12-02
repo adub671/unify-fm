@@ -37,8 +37,18 @@ function AuthModal({ isLogin }) {
           }}
         >
           <div className="auth-nav-container">
-            <div onClick={() => setLogin(true)}>Login</div>
-            <div onClick={() => setLogin(false)}>Sign Up</div>
+            <div
+              onClick={() => setLogin(true)}
+              className={login ? "auth-nav auth-active" : "auth-nav"}
+            >
+              Login
+            </div>
+            <div
+              onClick={() => setLogin(false)}
+              className={!login ? "auth-nav auth-active" : "auth-nav"}
+            >
+              Sign Up
+            </div>
           </div>
           {login ? (
             <LoginForm setShowModal={setShowModal} />

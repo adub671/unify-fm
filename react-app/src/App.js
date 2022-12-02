@@ -16,6 +16,7 @@ import FavoriteStationsCarousel from "./components/RadioStation/FavoriteStations
 import StationPage from "./components/StationPage";
 import AllStations from "./components/AllStations/AllStations";
 import "./index.css";
+import "./components/auth/Forms.css";
 
 function App() {
   const [loaded, setLoaded] = useState(false);

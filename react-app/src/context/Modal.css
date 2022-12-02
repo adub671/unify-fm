@@ -22,12 +22,13 @@
 #modal-content {
   position: absolute;
   background-color: white;
-  width: 50%;
-  height: fit-content;
+  width: max-content;
+  height: max-content;
   border-radius: 2px;
-  padding: 4%;
+  padding: 2%;
   animation-duration: 0.5s;
   animation-name: modal-slide-in;
+  border-radius: 10px;
 }
 
 @keyframes modal-slide-in {

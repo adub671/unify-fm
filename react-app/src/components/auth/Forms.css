@@ -1,0 +1,68 @@
+.form-fields {
+  margin-block: 10px;
+  display: flex;
+  justify-content: flex-end;
+  width: 500px;
+}
+
+.form-fields > input {
+  width: 300px;
+  margin-left: 10px;
+  margin-right: 55px;
+}
+
+.form-fields > label {
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-submit {
+  padding: 10px;
+  width: 400px;
+  margin: 10px;
+  align-self: center;
+  justify-self: centers;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-nav-container {
+  display: flex;
+  justify-content: center;
+}
+
+.auth-nav {
+  width: 200px;
+  height: 50px;
+  background-color: blue;
+  border-radius: 5px;
+
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-active {
+  color: white;
+}
+
+.error-validation {
+  color: red;
+  text-align: center;
+}
+
+.form-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
