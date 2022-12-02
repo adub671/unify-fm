@@ -51,9 +51,10 @@ export default function AppAudioPlayer() {
     })();
   }, [currentStation]);
 
-  navigator.mediaSession.setActionHandler("play", function () {
-    player.current.audio.current.play();
-  });
+  if (currentStation?.name && "mediaSession" in navigator)
+    navigator.mediaSession.setActionHandler("play", function () {
+      player.current.audio.current.play();
+    });
   navigator.mediaSession.setActionHandler("pause", function () {
     player.current.audio.current.pause();
   });

@@ -51,14 +51,6 @@ export default function AudioProvider({ children }) {
           },
         ],
       });
-      navigator.mediaSession.setActionHandler("play", function () {});
-      navigator.mediaSession.setActionHandler("pause", function () {});
-
-      navigator.mediaSession.setActionHandler("previoustrack", function () {});
-      navigator.mediaSession.setActionHandler("nexttrack", function () {});
-      // if (currentStation?.name) {
-      //   document.title = nowPlaying + currentStation?.name;
-      // }
     }
   })();
 
