@@ -1,0 +1,15 @@
+.home-title {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 50px;
+}
+
+.home-spacer {
+  height: 50px;
+}
+
+.home-description {
+  text-align: right;
+  margin-right: 50px;
+  margin-bottom: 10px;
+}

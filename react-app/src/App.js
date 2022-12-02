@@ -17,6 +17,7 @@ import StationPage from "./components/StationPage";
 import AllStations from "./components/AllStations/AllStations";
 import "./index.css";
 import "./components/auth/Forms.css";
+import Home from "./components/Home";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,9 +40,7 @@ function App() {
       <div className="page-container">
         <Switch>
           <Route path="/" exact={true}>
-            <h1>UNIFY FM</h1>
-            <AllStationsCarousel />
-            <FavoriteStationsCarousel />
+            <Home />
           </Route>
           <ProtectedRoute path="/favorites" exact={true}>
             <FavoriteStations />
