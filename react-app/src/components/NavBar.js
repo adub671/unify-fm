@@ -10,35 +10,35 @@ const NavBar = () => {
 
   return (
     <nav>
-      <ul className="link-container">
-        <li className="nav-link">UNIFY.FM</li>
-        <li className="nav-link">
+      <div className="nav-logo">UNIFY.FM</div>
+      <div className="link-container">
+        <div className="nav-link">
           <NavLink to="/" exact={true} activeClassName="active">
             Home
           </NavLink>
-        </li>
+        </div>
         {!user && (
           <>
-            <li className="nav-link">
+            <div className="nav-link">
               <AuthModal isLogin={true} />
-            </li>
-            <li className="nav-link">
+            </div>
+            <div className="nav-link">
               <AuthModal isLogin={false} />
-            </li>
+            </div>
           </>
         )}
 
-        <li className="nav-link">
+        <div className="nav-link">
           <NavLink to="/stations" exact={true} activeClassName="active">
             Stations
           </NavLink>
-        </li>
+        </div>
         {user && (
-          <li className="nav-link">
+          <div className="nav-link">
             <LogoutButton />
-          </li>
+          </div>
         )}
-      </ul>
+      </div>
     </nav>
   );
 };

@@ -1,24 +1,43 @@
 nav {
-  background-color: blue;
+  background-color: #14213d;
+  display: flex;
+  align-items: center;
 }
 
 .link-container {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  list-style: none;
-  height: 50px;
+  margin-left: 20px;
 }
 
-.link-container > li > a {
+.link-container > div > a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .nav-link {
   margin-inline: 10px;
+  font-family: "Alfa Slab One";
+  font-size: 20px;
+  color: white;
 }
 
 .nav-link:hover {
   cursor: pointer;
+  color: #fca311;
+}
+.link-container > div > a:hover {
+  cursor: pointer;
+  color: #fca311;
+}
+
+.nav-logo {
+  font-family: "Bungee Shade";
+  color: white;
+  font-size: 30px;
+  justify-self: flex-start;
+  margin-left: 20px;
+}
+.nav-logo:hover {
+  color: #fca311;
 }

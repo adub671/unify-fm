@@ -1,7 +1,23 @@
 .home-title {
-  text-align: center;
-  margin-top: 50px;
+  margin-top: 40px;
   font-size: 50px;
+  font-family: "Bungee Shade";
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  padding-inline: 20px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.home-banner {
+  background-image: url("https://img.freepik.com/free-photo/yellow-liquid-marble-background-handmade-colorful-flowing-texture-experimental-art_53876-108073.jpg?w=2000");
+  background-position: -50px;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .home-spacer {
@@ -10,6 +26,12 @@
 
 .home-description {
   text-align: right;
-  margin-right: 50px;
-  margin-bottom: 10px;
+  margin-right: 0px;
+  margin-block: 5px;
+  font-family: "Alfa Slab One";
+  align-self: flex-end;
+
+  color: white;
+  background-color: black;
+  padding-inline: 10px;
 }

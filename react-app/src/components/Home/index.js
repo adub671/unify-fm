@@ -7,9 +7,11 @@ function Home() {
   return (
     <>
       <div className="home-container">
-        <div className="home-title">UNIFY.FM</div>
-        <div className="home-description">
-          Where Music Lovers and Internet Radio Collide
+        <div className="home-banner">
+          <div className="home-title">UNIFY.FM</div>
+          <div className="home-description">
+            Where Music Lovers and Internet Radio Collide
+          </div>
         </div>
         <AllStationsCarousel />
         <div className="home-spacer"></div>
