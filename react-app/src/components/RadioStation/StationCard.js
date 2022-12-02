@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import { AudioContext } from "../../context/Audio";
 import "./StationCard.css";
 
+//Station Card For the carousel
+
 const StationCard = ({ station, favorite }) => {
   const {
     currentStation,
@@ -14,6 +16,7 @@ const StationCard = ({ station, favorite }) => {
     player,
   } = useContext(AudioContext);
   const [play, setPlay] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const favorites = useSelector((state) => state.favorites);
   const stations = useSelector((state) => state.stations);
 
@@ -52,9 +55,12 @@ const StationCard = ({ station, favorite }) => {
   };
   return (
     <>
-      <div className="station-card-container" onClick={playStation}>
+      <div className="station-card-container">
         <div className="station-card-image-container">
-          <div className="station-card-image-play-container">
+          <div
+            className="station-card-image-play-container"
+            onClick={playStation}
+          >
             {play === true ? (
               <i className="fa-solid fa-pause station-card-image-play-pause">
                 {" "}
@@ -63,11 +69,19 @@ const StationCard = ({ station, favorite }) => {
               <i className="fa-solid fa-play station-card-image-play-pause"></i>
             )}
           </div>
-          <img
-            className="station-card-image"
-            src={station?.image_url}
-            alt="station cards"
-          />
+          {!imageError ? (
+            <img
+              className="station-card-image"
+              src={station?.image_url}
+              alt="station cards"
+              onError={() => setImageError(true)}
+              onClick={playStation}
+            />
+          ) : (
+            <div className="station-card-image-default">
+              <span>{station?.name}</span>
+            </div>
+          )}
         </div>
         <NavLink to={`/station/${station?.id}`} exact={true}>
           <div className="card-station-name">{station?.name}</div>

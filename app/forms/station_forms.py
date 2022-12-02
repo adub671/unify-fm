@@ -33,7 +33,8 @@ class StationForm(FlaskForm):
         Length(max=50)])
     additional_label_3 = StringField('Additional Label 3', validators=[
         Length(max=50)])
-    now_playing_url = StringField('Now Playing URL')
+    now_playing_url = StringField(
+        'Now Playing URL', validators=[Optional(), URL()])
 
 
 class EditStationForm(FlaskForm):
@@ -42,19 +43,20 @@ class EditStationForm(FlaskForm):
     admin_id = IntegerField('Admin Id', validators=[DataRequired()])
     stream_url = StringField('Stream URL', validators=[DataRequired()])
     image_url = StringField('Image URL', validators=[DataRequired(), URL()])
-    chat_url = StringField('Chat URL')
-    website_url = StringField('Website URL')
-    calendar_url = StringField('Calendar URL')
+    chat_url = StringField('Chat URL', validators=[Optional(), URL()])
+    website_url = StringField('Website URL', validators=[Optional(), URL()])
+    calendar_url = StringField('Calendar URL', validators=[Optional(), URL()])
     additional_link_1 = StringField(
-        'Additional Link 1')
+        'Additional Link 1', validators=[Optional(), URL()])
     additional_link_2 = StringField(
-        'Additional Link 2')
+        'Additional Link 2', validators=[Optional(), URL()])
     additional_link_3 = StringField(
-        'Additional Link 3')
+        'Additional Link 3', validators=[Optional(), URL()])
     additional_label_1 = StringField('Additional Label 1', validators=[
         Length(max=50)])
     additional_label_2 = StringField('Additional Label 2', validators=[
         Length(max=50)])
     additional_label_3 = StringField('Additional Label 3', validators=[
         Length(max=50)])
-    now_playing_url = StringField('Now Playing URL')
+    now_playing_url = StringField(
+        'Now Playing URL', validators=[Optional(), URL()])

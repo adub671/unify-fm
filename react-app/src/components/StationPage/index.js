@@ -17,6 +17,7 @@ const StationPage = () => {
   const [station, setPageStation] = useState({});
   const stations = useSelector((state) => state.stations);
   const user = useSelector((state) => state.session.user);
+  const [imageError, setImageError] = useState(false);
   const { stationId } = useParams();
   const [play, setPlay] = useState(false);
   const [nowPlaying, setNowPlaying] = useState("");
@@ -49,7 +50,7 @@ const StationPage = () => {
     setPageStation(stations[stationId]);
   }, [stations]);
 
-  //Determines Play or Pause Image For the Card
+  //Determines Play or Pause Image
   useEffect(() => {
     if (currentStation === station) {
       if (isPlaying) {
@@ -60,16 +61,24 @@ const StationPage = () => {
     } else {
       setPlay(false);
     }
-  }, [currentStation, isPlaying]);
+  }, [currentStation, isPlaying, station]);
 
   return (
     <>
       <div>
-        <img
-          className="station-page-image"
-          src={station?.image_url}
-          alt="station cards"
-        />
+        {!imageError ? (
+          <img
+            className="station-page-image"
+            src={station?.image_url}
+            alt="station cards"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="station-page-image-default">
+            <span>{station?.name}</span>
+          </div>
+        )}
+
         <div
           className="station-page-play-button-container"
           onClick={handlePlay}

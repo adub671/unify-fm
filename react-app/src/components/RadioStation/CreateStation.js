@@ -69,7 +69,7 @@ const CreateStation = ({ setShowModal }) => {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-fields">
-            <label>Station Name: </label>
+            <label>*Station Name: </label>
             <input
               onChange={(e) => {
                 setName(e.target.value);
@@ -77,7 +77,7 @@ const CreateStation = ({ setShowModal }) => {
             />
           </div>
           <div className="form-fields">
-            <label>Stream URL: </label>
+            <label>*Stream URL: </label>
             <input
               onChange={(e) => {
                 setStreamUrl(e.target.value);
@@ -85,7 +85,7 @@ const CreateStation = ({ setShowModal }) => {
             />
           </div>
           <div className="form-fields">
-            <label>Image URL: </label>
+            <label>*Image URL: </label>
             <input
               onChange={(e) => {
                 setImageUrl(e.target.value);
@@ -177,7 +177,8 @@ const CreateStation = ({ setShowModal }) => {
             value="Create Station"
             className="form-submit"
           ></input>
-        </form>{" "}
+        </form>
+        <div className="required-fields">* indicates field is required</div>
       </div>
     </>
   );

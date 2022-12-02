@@ -5,6 +5,27 @@
 .all-stations-card-image {
   height: 300px;
   width: 300px;
+  border-bottom: 1px solid black;
+  border: 1px solid black;
+}
+
+.all-stations-card-image-default {
+  height: 300px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  background-color: black;
+  color: whitesmoke;
+  /* white-space: nowrap; */
+}
+
+.all-stations-card-image-default > span {
+  margin-left: 10%;
+  text-overflow: ellipsis;
+  font-size: 40px;
 }
 
 .favorite-icon {
@@ -15,6 +36,7 @@
   width: 300px;
   font-size: 20px;
   text-align: center;
+  padding-top: 5px;
 }
 
 .all-stations-card-container {
@@ -59,9 +81,14 @@
 .all-stations-button-container {
   display: flex;
   justify-content: center;
-
   width: 100%;
+  background-color: black;
 }
+
+.all-stations-icon {
+  color: white;
+}
+
 .all-stations-button-container > div {
   margin: 5px 5px;
 }
@@ -72,15 +99,23 @@ a {
 
 .all-stations-now-playing-container {
   font-size: 20px;
-  width: 300px;
+  width: 290px;
+  padding-inline: 5px;
 }
 
 .all-stations-title {
   text-align: center;
   margin-top: 50px;
   font-size: 40px;
+  margin-bottom: 30px;
 }
 
 .all-stations-positioning-container {
   margin: auto;
+}
+
+.all-stations-text-container {
+  box-sizing: border-box;
+  box-shadow: 0px 0px 0px 1px black inset;
+  margin-top: -5px;
 }

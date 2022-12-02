@@ -12,6 +12,7 @@ const SignUpForm = () => {
   const user = useSelector((state) => state.session.user);
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
+  const [passwordMatches, setPasswordMatches] = useState(true);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
@@ -106,6 +107,7 @@ const SignUpForm = () => {
             value={password}
           ></input>
         </div>
+
         <div className="form-fields">
           <label>Repeat Password: </label>
           <input
@@ -116,6 +118,9 @@ const SignUpForm = () => {
             required={true}
           ></input>
         </div>
+        {password !== repeatPassword && (
+          <div className="password-match-error">Passwords Must Match</div>
+        )}
         <button type="submit" className="form-submit">
           Sign Up
         </button>

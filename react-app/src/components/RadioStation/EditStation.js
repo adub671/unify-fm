@@ -19,6 +19,7 @@ const EditStation = ({ station, setShowModal }) => {
   const [additional_label_1, setLabel1] = useState(station?.additional_label_1);
   const [additional_label_2, setLabel2] = useState(station?.additional_label_2);
   const [additional_label_3, setLabel3] = useState(station?.additional_label_3);
+  const [now_playing_url, setNowPlayingUrl] = useState("");
   const [errors, setErrors] = useState([]);
   const { setStation, currentStation } = useContext(AudioContext);
 
@@ -55,6 +56,7 @@ const EditStation = ({ station, setShowModal }) => {
       additional_label_1,
       additional_label_2,
       additional_label_3,
+      now_playing_url,
     };
     const response = await dispatch(editStation(payload));
 
@@ -62,6 +64,7 @@ const EditStation = ({ station, setShowModal }) => {
       const backendErrs = Object.entries(response.errors);
       setErrors(backendErrs);
     } else {
+      console.log("no errors");
       setShowModal(false);
     }
     if (station.id === currentStation.id) {
@@ -71,126 +74,141 @@ const EditStation = ({ station, setShowModal }) => {
 
   return (
     <>
-      <h1>Edit A Station</h1>
-      <div className="validation-errors">
-        {errors?.length > 0 &&
-          errors?.map((error) => (
-            <div>
-              {error[0]} : {error[1]}
-            </div>
-          ))}
+      <div className="form-container">
+        <div className="form-title">Edit A Station</div>
+        <div className="error-validation">
+          {errors?.length > 0 &&
+            errors?.map((error) => (
+              <div>
+                {error[0]} : {error[1]}
+              </div>
+            ))}
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="form-fields">
+            <label>*Station Name: </label>
+            <input
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>*Stream URL: </label>
+            <input
+              value={stream_url}
+              onChange={(e) => {
+                setStreamUrl(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>*Image URL: </label>
+            <input
+              value={image_url}
+              onChange={(e) => {
+                setImageUrl(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>Chat URL: </label>
+            <input
+              value={chat_url}
+              onChange={(e) => {
+                setChatUrl(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>Website URL: </label>
+            <input
+              value={website_url}
+              onChange={(e) => {
+                setWebsiteUrl(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>Calendar URL: </label>
+            <input
+              value={calendar_url}
+              onChange={(e) => {
+                setCalendarUrl(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>Now Playing URL: </label>
+            <input
+              onChange={(e) => {
+                setNowPlayingUrl(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>Additional Label 1: </label>
+            <input
+              value={additional_label_1}
+              onChange={(e) => {
+                setLabel1(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>Additional Link 1: </label>
+            <input
+              value={additional_link_1}
+              onChange={(e) => {
+                setLink1(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>Additional Label 2: </label>
+            <input
+              value={additional_label_2}
+              onChange={(e) => {
+                setLabel2(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>Additional Link 2: </label>
+            <input
+              value={additional_link_2}
+              onChange={(e) => {
+                setLink2(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>Additional Label 3: </label>
+            <input
+              value={additional_label_3}
+              onChange={(e) => {
+                setLabel3(e.target.value);
+              }}
+            />
+          </div>
+          <div className="form-fields">
+            <label>Additional Link 3: </label>
+            <input
+              value={additional_link_3}
+              onChange={(e) => {
+                setLink3(e.target.value);
+              }}
+            />
+          </div>
+          <input
+            type="submit"
+            value="Edit Station"
+            className="form-submit"
+          ></input>
+        </form>
+        <div className="required-fields">* indicates field is required</div>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Station Name: </label>
-          <input
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label>Stream URL: </label>
-          <input
-            value={stream_url}
-            onChange={(e) => {
-              setStreamUrl(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label>Image URL: </label>
-          <input
-            value={image_url}
-            onChange={(e) => {
-              setImageUrl(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label>Chat URL: </label>
-          <input
-            value={chat_url}
-            onChange={(e) => {
-              setChatUrl(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label>Website URL: </label>
-          <input
-            value={website_url}
-            onChange={(e) => {
-              setWebsiteUrl(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label>Calendar URL: </label>
-          <input
-            value={calendar_url}
-            onChange={(e) => {
-              setCalendarUrl(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label>Additional Label: </label>
-          <input
-            value={additional_label_1}
-            onChange={(e) => {
-              setLabel1(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label>Additional Link: </label>
-          <input
-            value={additional_link_1}
-            onChange={(e) => {
-              setLink1(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label>Additional Label: </label>
-          <input
-            value={additional_label_2}
-            onChange={(e) => {
-              setLabel2(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label>Additional Link: </label>
-          <input
-            value={additional_link_2}
-            onChange={(e) => {
-              setLink2(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label>Additional Label: </label>
-          <input
-            value={additional_label_3}
-            onChange={(e) => {
-              setLabel3(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label>Additional Link: </label>
-          <input
-            value={additional_link_3}
-            onChange={(e) => {
-              setLink3(e.target.value);
-            }}
-          />
-        </div>
-        <input type="submit" value="Create Station"></input>
-      </form>{" "}
     </>
   );
 };

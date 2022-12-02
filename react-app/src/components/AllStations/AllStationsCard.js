@@ -5,6 +5,7 @@ import { AudioContext } from "../../context/Audio";
 import { nowPlayingParser } from "../../utils/nowPlayingParser";
 import EditStationButton from "../RadioStation/EditStationButton";
 import FavoriteButton from "../RadioStation/FavoriteButton";
+import User from "../User";
 import "./AllStationsCard.css";
 
 const AllStationsCard = ({ station, favorite }) => {
@@ -19,6 +20,8 @@ const AllStationsCard = ({ station, favorite }) => {
   const [play, setPlay] = useState(false);
   const favorites = useSelector((state) => state.favorites);
   const stations = useSelector((state) => state.stations);
+  const user = useSelector((state) => state.session.user);
+  const [imageError, setImageError] = useState(false);
   const [nowPlaying, setNowPlaying] = useState("");
   useEffect(() => {
     (async () => {
@@ -78,23 +81,34 @@ const AllStationsCard = ({ station, favorite }) => {
               <i className="fa-solid fa-play all-stations-card-image-play-pause"></i>
             )}
           </div>
-          <img
-            className="all-stations-card-image "
-            src={station?.image_url}
-            alt="station cards"
-            onClick={playStation}
-          />
+          {!imageError ? (
+            <img
+              className="all-stations-card-image"
+              src={station?.image_url}
+              alt="station cards"
+              onError={() => setImageError(true)}
+              onClick={playStation}
+            />
+          ) : (
+            <div className="all-stations-card-image-default">
+              <span>{station?.name}</span>
+            </div>
+          )}
         </div>
-        <NavLink to={`/station/${station?.id}`} exact={true}>
-          <div className="all-stations-card-name">{station?.name}</div>
-        </NavLink>
-        <div className="all-stations-now-playing-container">{nowPlaying}</div>
+        <div className="all-stations-text-container">
+          <NavLink to={`/station/${station?.id}`} exact={true}>
+            <div className="all-stations-card-name">{station?.name}</div>
+          </NavLink>
+          <div className="all-stations-now-playing-container">{nowPlaying}</div>
+        </div>
         <div className="all-stations-button-container">
           <FavoriteButton station={station} />
-          <EditStationButton station={station} />
+          {station?.admin_id === user?.id && (
+            <EditStationButton station={station} />
+          )}
           <div className="all-stations-button">
             <a href={station?.website_url}>
-              <i className="fa-solid fa-globe"></i>
+              <i className="fa-solid fa-globe all-stations-icon"></i>
             </a>
           </div>
           {station?.chat_url && (
@@ -108,7 +122,7 @@ const AllStationsCard = ({ station, favorite }) => {
               }}
               className="all-stations-card-button"
             >
-              <i className="fas fa-comments"></i>
+              <i className="fas fa-comments all-stations-icon"></i>
             </div>
           )}
         </div>
