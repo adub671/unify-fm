@@ -29,6 +29,7 @@
   animation-duration: 0.5s;
   animation-name: modal-slide-in;
   border-radius: 10px;
+  border: 10px solid #14213d;
 }
 
 @keyframes modal-slide-in {

@@ -28,3 +28,7 @@ a:visited {
 a:hover {
   color: gray;
 }
+
+body {
+  font-family: "Alfa Slab One";
+}
