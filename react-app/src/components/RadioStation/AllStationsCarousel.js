@@ -22,8 +22,8 @@ const AllStationsCarousel = () => {
       </div>
       <div className="carousel-container">
         {stations &&
-          Object.values(stations)?.map((station) => (
-            <StationCard station={station} />
+          Object.values(stations)?.map((station, idx) => (
+            <StationCard station={station} key={idx} />
           ))}
       </div>
     </>

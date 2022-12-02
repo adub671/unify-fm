@@ -33,11 +33,6 @@ const NavBar = () => {
             Stations
           </NavLink>
         </li>
-        <li className="nav-link">
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li>
         {user && (
           <li className="nav-link">
             <LogoutButton />

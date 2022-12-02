@@ -56,9 +56,9 @@ const StationPage = () => {
         >
           {" "}
           {currentStation === station ? (
-            <i class="fa-solid fa-pause station-page-play-button"> </i>
+            <i className="fa-solid fa-pause station-page-play-button"> </i>
           ) : (
-            <i class="fa-solid fa-play station-page-play-button"></i>
+            <i className="fa-solid fa-play station-page-play-button"></i>
           )}
         </div>
       </div>
@@ -72,7 +72,7 @@ const StationPage = () => {
         }}
       >
         <span className="station-page-link-label">Share </span>
-        <i class="fa-solid fa-share station-page-link-icon"></i>
+        <i className="fa-solid fa-share station-page-link-icon"></i>
       </div>
       {/* <a href={station?.chat_url} target="_blank" rel="noreferrer"> */}
       {station?.chat_url && (
@@ -83,7 +83,7 @@ const StationPage = () => {
           className="station-page-link"
         >
           <span className="station-page-link-label">Chat </span>
-          <i class="fas fa-comments station-page-link-icon"></i>
+          <i className="fas fa-comments station-page-link-icon"></i>
         </div>
       )}
       {/* </a> */}
@@ -106,7 +106,7 @@ const StationPage = () => {
         <a href={station?.website_url}>
           <div className="station-page-link">
             <span className="station-page-link-label">Website </span>
-            <i class="fa-solid fa-globe station-page-link-icon"></i>
+            <i className="fa-solid fa-globe station-page-link-icon"></i>
           </div>
         </a>
       )}
@@ -116,7 +116,7 @@ const StationPage = () => {
             <span className="station-page-link-label">
               {station?.additional_label_1}{" "}
             </span>
-            <i class="fa-solid fa-link station-page-link-icon"></i>
+            <i className="fa-solid fa-link station-page-link-icon"></i>
           </div>
         </a>
       )}
@@ -126,7 +126,7 @@ const StationPage = () => {
             <span className="station-page-link-label">
               {station?.additional_label_2}{" "}
             </span>
-            <i class="fa-solid fa-link station-page-link-icon"></i>
+            <i className="fa-solid fa-link station-page-link-icon"></i>
           </div>
         </a>
       )}
@@ -136,7 +136,7 @@ const StationPage = () => {
             <span className="station-page-link-label">
               {station?.additional_label_3}{" "}
             </span>
-            <i class="fa-solid fa-link station-page-link-icon"></i>
+            <i className="fa-solid fa-link station-page-link-icon"></i>
           </div>
         </a>
       )}

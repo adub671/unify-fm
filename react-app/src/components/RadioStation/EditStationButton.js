@@ -7,7 +7,7 @@ function EditStationButton({ station }) {
   return (
     <div>
       <i
-        class="fas fa-edit edit-station-button"
+        className="fas fa-edit edit-station-button"
         onClick={() => {
           setShowModal(true);
         }}

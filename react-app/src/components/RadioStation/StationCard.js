@@ -56,9 +56,11 @@ const StationCard = ({ station, favorite }) => {
         <div className="station-card-image-container">
           <div className="station-card-image-play-container">
             {play === true ? (
-              <i class="fa-solid fa-pause station-card-image-play-pause"> </i>
+              <i className="fa-solid fa-pause station-card-image-play-pause">
+                {" "}
+              </i>
             ) : (
-              <i class="fa-solid fa-play station-card-image-play-pause"></i>
+              <i className="fa-solid fa-play station-card-image-play-pause"></i>
             )}
           </div>
           <img

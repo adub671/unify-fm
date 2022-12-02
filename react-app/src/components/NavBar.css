@@ -18,3 +18,7 @@ nav {
 .nav-link {
   margin-inline: 10px;
 }
+
+.nav-link:hover {
+  cursor: pointer;
+}

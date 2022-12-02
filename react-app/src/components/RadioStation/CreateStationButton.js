@@ -7,7 +7,7 @@ function CreateStationButton() {
   return (
     <div>
       <i
-        class="fa-solid fa-plus create-station-button"
+        className="fa-solid fa-plus create-station-button"
         onClick={() => {
           setShowModal(true);
         }}

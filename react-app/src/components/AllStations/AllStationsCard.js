@@ -71,11 +71,11 @@ const AllStationsCard = ({ station, favorite }) => {
             onClick={playStation}
           >
             {play === true ? (
-              <i class="fa-solid fa-pause all-stations-card-image-play-pause">
+              <i className="fa-solid fa-pause all-stations-card-image-play-pause">
                 {" "}
               </i>
             ) : (
-              <i class="fa-solid fa-play all-stations-card-image-play-pause"></i>
+              <i className="fa-solid fa-play all-stations-card-image-play-pause"></i>
             )}
           </div>
           <img
@@ -94,7 +94,7 @@ const AllStationsCard = ({ station, favorite }) => {
           <EditStationButton station={station} />
           <div className="all-stations-button">
             <a href={station?.website_url}>
-              <i class="fa-solid fa-globe"></i>
+              <i className="fa-solid fa-globe"></i>
             </a>
           </div>
           {station?.chat_url && (
@@ -108,7 +108,7 @@ const AllStationsCard = ({ station, favorite }) => {
               }}
               className="all-stations-card-button"
             >
-              <i class="fas fa-comments"></i>
+              <i className="fas fa-comments"></i>
             </div>
           )}
         </div>

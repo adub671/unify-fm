@@ -37,12 +37,6 @@ function App() {
       <NavBar />
       <div className="page-container">
         <Switch>
-          <ProtectedRoute path="/users" exact={true}>
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute path="/users/:userId" exact={true}>
-            <User />
-          </ProtectedRoute>
           <Route path="/" exact={true}>
             <h1>UNIFY FM</h1>
             <AllStationsCarousel />

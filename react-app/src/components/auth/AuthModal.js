@@ -10,7 +10,7 @@ function AuthModal({ isLogin }) {
     <div>
       {login ? (
         <div
-          className="auth-modal-log-in"
+          className="auth-modal-log-in nav-link"
           onClick={() => {
             setShowModal(true);
             setLogin(true);
@@ -20,7 +20,7 @@ function AuthModal({ isLogin }) {
         </div>
       ) : (
         <div
-          className="auth-modal-sign-up"
+          className="auth-modal-sign-up nav-link"
           onClick={() => {
             setShowModal(true);
             setLogin(false);
