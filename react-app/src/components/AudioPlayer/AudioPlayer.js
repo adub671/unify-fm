@@ -51,6 +51,16 @@ export default function AppAudioPlayer() {
     })();
   }, [currentStation]);
 
+  navigator.mediaSession.setActionHandler("play", function () {
+    player.current.audio.current.play();
+  });
+  navigator.mediaSession.setActionHandler("pause", function () {
+    player.current.audio.current.pause();
+  });
+
+  navigator.mediaSession.setActionHandler("previoustrack", clickPrev);
+  navigator.mediaSession.setActionHandler("nexttrack", clickNext);
+
   return (
     <div className="fixed-audio-container">
       <div className="player-logo">UNIFY FM</div>

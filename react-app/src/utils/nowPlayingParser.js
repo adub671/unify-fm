@@ -24,12 +24,12 @@ export const nowPlayingParser = async (nowPlayingUrl) => {
         nowPlaying = nowPlayingData.results[0].now.broadcast_title;
       }
     } else {
-      nowPlaying = "Now Playing Info Not Found";
+      nowPlaying = "...";
     }
 
     return nowPlaying;
   } catch (error) {
     console.log("now playing parser error:", error);
-    return "Now Playing Info Not Found";
+    return "...";
   }
 };
