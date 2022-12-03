@@ -15,6 +15,11 @@ const FavoriteButton = ({ station, isButton }) => {
   useEffect(() => {
     setFavorited(favorites.includes(station?.id));
   }, [station, favorites]);
+  useEffect(() => {
+    if (!user) {
+      setFavorited(false);
+    }
+  }, [user]);
 
   useEffect(() => {
     (async () => {

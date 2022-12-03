@@ -106,11 +106,13 @@ const AllStationsCard = ({ station, favorite }) => {
           {station?.admin_id === user?.id && (
             <EditStationButton station={station} />
           )}
-          <div className="all-stations-button">
-            <a href={station?.website_url}>
-              <i className="fa-solid fa-globe all-stations-icon"></i>
-            </a>
-          </div>
+          {station?.website_url && (
+            <div className="all-stations-button">
+              <a href={station?.website_url}>
+                <i className="fa-solid fa-globe all-stations-icon"></i>
+              </a>
+            </div>
+          )}
           {station?.chat_url && (
             <div
               onClick={() => {

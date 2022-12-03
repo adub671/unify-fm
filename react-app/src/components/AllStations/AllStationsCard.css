@@ -74,8 +74,14 @@
 
 .all-stations-container {
   display: grid;
-  grid-template-columns: 300px 300px 300px;
-  grid-column-gap: 100px;
+  /* grid-template-columns: 300px 300px 300px; */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* grid-column-gap: 100px; */
+  max-width: 1000px;
+  gap: 50px;
+  /* display: flex;
+  /* height: 100vh;
+  white-space: wrap; */
 }
 
 .all-stations-button-container {
@@ -83,10 +89,14 @@
   justify-content: center;
   width: 100%;
   background-color: black;
+  z-index: -1;
 }
 
 .all-stations-icon {
   color: white;
+}
+.all-stations-icon:active {
+  color: #fca311;
 }
 
 .all-stations-button-container > div {
@@ -118,4 +128,6 @@ a {
   box-sizing: border-box;
   box-shadow: 0px 0px 0px 1px black inset;
   margin-top: -5px;
+  max-height: 90px;
+  overflow: hidden;
 }
