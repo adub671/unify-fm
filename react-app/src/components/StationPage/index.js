@@ -65,110 +65,120 @@ const StationPage = () => {
 
   return (
     <>
-      <div>
-        {!imageError ? (
-          <img
-            className="station-page-image"
-            src={station?.image_url}
-            alt="station cards"
-            onError={() => setImageError(true)}
-          />
-        ) : (
-          <div className="station-page-image-default">
-            <span>{station?.name}</span>
-          </div>
-        )}
-
-        <div
-          className="station-page-play-button-container"
-          onClick={handlePlay}
-        >
-          {" "}
-          {play ? (
-            <i className="fa-solid fa-pause station-page-play-button"> </i>
+      <div className="station-page-container">
+        <div className="station-page-image-container">
+          {!imageError ? (
+            <img
+              className="station-page-image"
+              src={station?.image_url}
+              alt="station cards"
+              onError={() => setImageError(true)}
+            />
           ) : (
-            <i className="fa-solid fa-play station-page-play-button"></i>
+            <div className="station-page-image-default">
+              <span>{station?.name}</span>
+            </div>
+          )}
+        </div>
+        <div className="station-page-info-container">
+          <div className="station-page-station-name">{station?.name}</div>
+          {nowPlaying.length > 0 && <div> Now Playing: {nowPlaying}</div>}
+          <div
+            className="station-page-play-button-container"
+            onClick={handlePlay}
+          >
+            {" "}
+            {play ? (
+              <i className="fa-solid fa-pause station-page-play-button"> </i>
+            ) : (
+              <i className="fa-solid fa-play station-page-play-button"></i>
+            )}
+          </div>
+        </div>
+        <div className="station-page-button-container">
+          <div
+            className="station-page-link"
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+              alert("Link Copied To Clipboard");
+            }}
+          >
+            <span className="station-page-link-label">Share </span>
+            <i className="fa-solid fa-share station-page-link-icon"></i>
+          </div>
+          {/* <a href={station?.chat_url} target="_blank" rel="noreferrer"> */}
+          {station?.chat_url && (
+            <div
+              onClick={() => {
+                window.open(
+                  station?.chat_url,
+                  "newwindow",
+                  "width=600,height=400"
+                );
+              }}
+              className="station-page-link"
+            >
+              <span className="station-page-link-label">Chat </span>
+              <i className="fas fa-comments station-page-link-icon"></i>
+            </div>
+          )}
+          {/* </a> */}
+
+          <FavoriteButton station={station} isButton={true} />
+
+          {station?.admin_id === user?.id && (
+            <div className="station-page-link">
+              <span className="station-page-link-label">Delete </span>
+              <DeleteStation station={station} redirect={true} />
+            </div>
+          )}
+          {station?.admin_id === user?.id && (
+            <div className="station-page-link">
+              <span className="station-page-link-label">Edit </span>
+              <EditStationButton station={station} />
+            </div>
+          )}
+          {station?.website_url && (
+            <a href={station?.website_url}>
+              <div className="station-page-link">
+                <span className="station-page-link-label">Website </span>
+                <i className="fa-solid fa-globe station-page-link-icon"></i>
+              </div>
+            </a>
+          )}
+          {station?.additional_link_1 && (
+            <a href={station?.additional_link_1}>
+              <div className="station-page-link">
+                <span className="station-page-link-label">
+                  {station?.additional_label_1}{" "}
+                </span>
+                <i className="fa-solid fa-link station-page-link-icon"></i>
+              </div>
+            </a>
+          )}
+          {station?.additional_link_2 && (
+            <a href={station?.additional_link_2}>
+              <div className="station-page-link">
+                <span className="station-page-link-label">
+                  {station?.additional_label_2}{" "}
+                </span>
+                <i className="fa-solid fa-link station-page-link-icon"></i>
+              </div>
+            </a>
+          )}
+          {station?.additional_link_3 && (
+            <a href={station?.additional_link_3}>
+              <div className="station-page-link">
+                <span className="station-page-link-label">
+                  {station?.additional_label_3}{" "}
+                </span>
+                <i className="fa-solid fa-link station-page-link-icon"></i>
+              </div>
+            </a>
           )}
         </div>
       </div>
-      <div className="station-page-station-name">{station?.name}</div>
-      {nowPlaying.length > 0 && <div> Now Playing: {nowPlaying}</div>}
-      <div
-        className="station-page-link"
-        onClick={() => {
-          navigator.clipboard.writeText(window.location.href);
-          alert("Link Copied To Clipboard");
-        }}
-      >
-        <span className="station-page-link-label">Share </span>
-        <i className="fa-solid fa-share station-page-link-icon"></i>
-      </div>
-      {/* <a href={station?.chat_url} target="_blank" rel="noreferrer"> */}
-      {station?.chat_url && (
-        <div
-          onClick={() => {
-            window.open(station?.chat_url, "newwindow", "width=600,height=400");
-          }}
-          className="station-page-link"
-        >
-          <span className="station-page-link-label">Chat </span>
-          <i className="fas fa-comments station-page-link-icon"></i>
-        </div>
-      )}
-      {/* </a> */}
-
-      <FavoriteButton station={station} isButton={true} />
-
-      {station?.admin_id === user?.id && (
-        <div className="station-page-link">
-          <span className="station-page-link-label">Delete </span>
-          <DeleteStation station={station} redirect={true} />
-        </div>
-      )}
-      {station?.admin_id === user?.id && (
-        <div className="station-page-link">
-          <span className="station-page-link-label">Edit </span>
-          <EditStationButton station={station} />
-        </div>
-      )}
-      {station?.website_url && (
-        <a href={station?.website_url}>
-          <div className="station-page-link">
-            <span className="station-page-link-label">Website </span>
-            <i className="fa-solid fa-globe station-page-link-icon"></i>
-          </div>
-        </a>
-      )}
-      {station?.additional_link_1 && (
-        <a href={station?.additional_link_1}>
-          <div className="station-page-link">
-            <span className="station-page-link-label">
-              {station?.additional_label_1}{" "}
-            </span>
-            <i className="fa-solid fa-link station-page-link-icon"></i>
-          </div>
-        </a>
-      )}
-      {station?.additional_link_2 && (
-        <a href={station?.additional_link_2}>
-          <div className="station-page-link">
-            <span className="station-page-link-label">
-              {station?.additional_label_2}{" "}
-            </span>
-            <i className="fa-solid fa-link station-page-link-icon"></i>
-          </div>
-        </a>
-      )}
-      {station?.additional_link_3 && (
-        <a href={station?.additional_link_3}>
-          <div className="station-page-link">
-            <span className="station-page-link-label">
-              {station?.additional_label_3}{" "}
-            </span>
-            <i className="fa-solid fa-link station-page-link-icon"></i>
-          </div>
-        </a>
-      )}
+      <div className="station-page-bottom-line"></div>
     </>
   );
 };

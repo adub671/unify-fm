@@ -4,11 +4,12 @@
   align-items: center;
   width: 100px;
   height: 100px;
-  background-color: blue;
+  background-color: #14213d;
   border-radius: 100px;
 }
 .station-page-play-button {
   font-size: 50px;
+  color: white;
 }
 
 .station-page-image {
@@ -36,14 +37,16 @@
 
 .station-page-link {
   display: flex;
-  height: 50px;
-  width: 100px;
+  height: 60px;
+  width: 150px;
   margin: 10px;
   justify-content: center;
   align-items: center;
-  background-color: blue;
+  background-color: #14213d;
+  color: white;
   border-radius: 5px;
   padding-inline: 10px;
+  font-size: 20px;
 }
 
 .station-page-link-icon {
@@ -53,4 +56,42 @@
 .station-page-link-label {
   width: 60%;
   font-size: 20px;
+}
+
+.station-page-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.station-page-image-container {
+  margin-top: 50px;
+  margin-left: 25px;
+}
+
+.station-page-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-inline: 50px;
+}
+
+.station-page-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.station-page-station-name {
+  font-size: 40px;
+  color: black !important;
+}
+
+.station-page-bottom-line {
+  border-bottom: 1px solid #e5e5e5;
+  height: 80px;
+  width: 100%;
+  display: flex;
 }
