@@ -2,5 +2,56 @@
   position: fixed;
   width: 100vw;
   bottom: 0px;
-  background-color: blue;
+}
+
+.audio-player-logo {
+  font-family: "Bungee Shade";
+  font-weight: bold;
+}
+
+.player-logo {
+  font-family: "Bungee Shade";
+  position: fixed;
+  bottom: 0px;
+  left: 200px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.app-audio-player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.now-playing-container {
+  width: 600px;
+  height: 30px;
+  white-space: nowrap;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding-block: 10px;
+
+  border-bottom: none;
+  position: fixed;
+  bottom: 15px;
+  right: 100px;
+  overflow: hidden;
+}
+
+.audio-player {
+  width: 100vw;
+}
+
+.rhap_progress-section {
+  display: none;
+}
+
+.now-playing-placeholder {
+  display: flex;
+  padding-top: 12px;
+  padding-left: 50px;
 }

@@ -127,16 +127,10 @@ const StationPage = () => {
           <FavoriteButton station={station} isButton={true} />
 
           {station?.admin_id === user?.id && (
-            <div className="station-page-link">
-              <span className="station-page-link-label">Delete </span>
-              <DeleteStation station={station} redirect={true} />
-            </div>
+            <DeleteStation station={station} redirect={true} />
           )}
           {station?.admin_id === user?.id && (
-            <div className="station-page-link">
-              <span className="station-page-link-label">Edit </span>
-              <EditStationButton station={station} />
-            </div>
+            <EditStationButton station={station} />
           )}
           {station?.website_url && (
             <a href={station?.website_url}>

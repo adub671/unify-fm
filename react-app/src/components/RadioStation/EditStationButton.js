@@ -6,12 +6,15 @@ function EditStationButton({ station }) {
   const [showModal, setShowModal] = useState(false);
   return (
     <div>
-      <i
-        className="fas fa-edit edit-station-button"
+      <div
         onClick={() => {
           setShowModal(true);
         }}
-      ></i>
+        className="station-page-link"
+      >
+        <span className="station-page-link-label">Edit </span>
+        <i className="fas fa-edit edit-station-button station-page-link-icon"></i>
+      </div>
 
       {showModal && (
         <Modal
