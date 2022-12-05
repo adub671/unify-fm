@@ -156,22 +156,22 @@ const CreateStation = ({ setShowModal }) => {
               }}
             />
           </div>
-          <div className="form-fields">
+          {/* <div className="form-fields">
             <label>Additional Label 3: </label>
             <input
               onChange={(e) => {
                 setLabel3(e.target.value);
               }}
             />
-          </div>
-          <div className="form-fields">
+          </div> */}
+          {/* <div className="form-fields">
             <label>Additional Link 3: </label>
             <input
               onChange={(e) => {
                 setLink3(e.target.value);
               }}
             />
-          </div>
+          </div> */}
           <input
             type="submit"
             value="Create Station"

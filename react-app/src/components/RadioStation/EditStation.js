@@ -187,7 +187,7 @@ const EditStation = ({ station, setShowModal }) => {
               }}
             />
           </div>
-          <div className="form-fields">
+          {/* <div className="form-fields">
             <label>Additional Label 3: </label>
             <input
               value={additional_label_3}
@@ -204,7 +204,7 @@ const EditStation = ({ station, setShowModal }) => {
                 setLink3(e.target.value);
               }}
             />
-          </div>
+          </div> */}
           <input
             type="submit"
             value="Edit Station"
