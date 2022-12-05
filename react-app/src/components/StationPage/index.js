@@ -82,7 +82,7 @@ const StationPage = () => {
         </div>
         <div className="station-page-info-container">
           <div className="station-page-station-name">{station?.name}</div>
-          {nowPlaying.length > 0 && <div> Now Playing: {nowPlaying}</div>}
+          {nowPlaying?.length > 0 && <div> Now Playing: {nowPlaying}</div>}
           <div
             className="station-page-play-button-container"
             onClick={handlePlay}

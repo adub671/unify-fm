@@ -2,6 +2,7 @@ export const nowPlayingParser = async (nowPlayingUrl) => {
   try {
     const response = await fetch(nowPlayingUrl);
     const nowPlayingData = await response.json();
+    console.log(nowPlayingData, "now playing data");
     let nowPlaying;
     if (response.ok) {
       if (nowPlayingUrl.startsWith("https://www.intergalactic.fm/")) {
@@ -22,6 +23,24 @@ export const nowPlayingParser = async (nowPlayingUrl) => {
       }
       if (nowPlayingUrl.startsWith("https://www.nts.live/")) {
         nowPlaying = nowPlayingData.results[0].now.broadcast_title;
+      }
+      if (
+        nowPlayingUrl ===
+        "https://api-1.dublab.com/wp-json/lazystate/v1/stream?"
+      ) {
+        nowPlaying = nowPlayingData["/stream"]["current"]["combo"];
+      }
+      if (nowPlayingUrl === "https://netilradio.airtime.pro/api/live-info") {
+        nowPlaying = nowPlayingData.current.name;
+      }
+      if (nowPlayingUrl === "https://balamii.airtime.pro/api/live-info") {
+        nowPlaying = nowPlayingData.currentShow[0].name;
+      }
+      if (
+        nowPlayingUrl ===
+        "https://rinse.fm/_next/data/Mp-cYr2q7zwYct9IIxLpp/en/schedule.json"
+      ) {
+        nowPlaying = nowPlayingData.pageProps.episodesData.entries.title;
       }
     } else {
       nowPlaying = "...";
