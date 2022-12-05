@@ -58,6 +58,15 @@ const CreateStation = ({ setShowModal }) => {
   return (
     <>
       <div className="form-container">
+        <div
+          onClick={() => {
+            console.log("click x");
+            setShowModal(false);
+          }}
+          className="close-form"
+        >
+          X
+        </div>
         <div className="form-title">Create A Station</div>
         <div className="error-validation">
           {errors?.length > 0 &&

@@ -131,3 +131,20 @@ a {
   max-height: 90px;
   overflow: hidden;
 }
+
+.create-station-button {
+  position: relative;
+  top: -120px;
+  left: 760px;
+
+  background-color: #fca311;
+  width: 200px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+}
+
+.create-station-icon {
+  margin-left: 15px;
+  font-size: 20px;
+}
