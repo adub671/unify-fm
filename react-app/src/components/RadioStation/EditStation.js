@@ -19,7 +19,9 @@ const EditStation = ({ station, setShowModal }) => {
   const [additional_label_1, setLabel1] = useState(station?.additional_label_1);
   const [additional_label_2, setLabel2] = useState(station?.additional_label_2);
   const [additional_label_3, setLabel3] = useState(station?.additional_label_3);
-  const [now_playing_url, setNowPlayingUrl] = useState("");
+  const [now_playing_url, setNowPlayingUrl] = useState(
+    station?.now_playing_url
+  );
   const [errors, setErrors] = useState([]);
   const { setStation, currentStation } = useContext(AudioContext);
 
