@@ -30,6 +30,7 @@ const EditStation = ({ station, setShowModal }) => {
     setChatUrl(station?.chat_url);
     setWebsiteUrl(station?.website_url);
     setCalendarUrl(station?.calendar_url);
+    setNowPlayingUrl(station?.now_playing_url);
     setLink1(station?.additional_link_1);
     setLink2(station?.additional_link_2);
     setLink3(station?.additional_link_3);
@@ -142,6 +143,7 @@ const EditStation = ({ station, setShowModal }) => {
           <div className="form-fields">
             <label>Now Playing URL: </label>
             <input
+              value={now_playing_url}
               onChange={(e) => {
                 setNowPlayingUrl(e.target.value);
               }}

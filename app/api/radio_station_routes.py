@@ -39,7 +39,7 @@ def create_station():
     if form.validate_on_submit():
         data = form.data
         new_station = RadioStation(name=data['name'], admin_id=data['admin_id'], stream_url=data['stream_url'], image_url=data['image_url'], chat_url=data['chat_url'], website_url=data['website_url'], calendar_url=data['calendar_url'], additional_link_1=data[
-                                   'additional_link_1'], additional_link_2=data['additional_link_2'], additional_link_3=data['additional_link_3'], additional_label_1=data['additional_label_1'], additional_label_2=data['additional_label_2'], additional_label_3=data['additional_label_3'])
+                                   'additional_link_1'], additional_link_2=data['additional_link_2'], additional_link_3=data['additional_link_3'], additional_label_1=data['additional_label_1'], additional_label_2=data['additional_label_2'], additional_label_3=data['additional_label_3'], now_playing_url=data['now_playing_url'])
 
         db.session.add(new_station)
         db.session.commit()
@@ -49,7 +49,7 @@ def create_station():
     return {"errors": form.errors}
 
 
-@radio_station_routes.route('/<int:station_id>', methods=["DELETE"])
+@ radio_station_routes.route('/<int:station_id>', methods=["DELETE"])
 def delete_station(station_id):
     """
     Delete Radio Station
@@ -62,7 +62,7 @@ def delete_station(station_id):
     return 'Delete Station Not Successful'
 
 
-@radio_station_routes.route('/<int:station_id>', methods=["PUT"])
+@ radio_station_routes.route('/<int:station_id>', methods=["PUT"])
 def update_station(station_id):
     """
     Update Radio Station
@@ -86,6 +86,7 @@ def update_station(station_id):
             station.additional_label_1 = data['additional_label_1']
             station.additional_label_2 = data['additional_label_2']
             station.additional_label_3 = data['additional_label_3']
+            station.now_playing_url = data['now_playing_url']
             db.session.add(station)
             db.session.commit()
             return station.to_dict()
