@@ -1,0 +1,9 @@
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80vw;
+}
+
+.about-links {
+  margin-inline: 10px;
+}

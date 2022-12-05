@@ -18,6 +18,7 @@ import AllStations from "./components/AllStations/AllStations";
 import "./index.css";
 import "./components/auth/Forms.css";
 import Home from "./components/Home";
+import About from "./components/About";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -53,7 +54,11 @@ function App() {
           </Route>
         </Switch>
       </div>
-      <div className="bottom-spacer"></div>
+
+      <div className="bottom-spacer">
+        <About />
+      </div>
+
       <AppAudioPlayer />
     </BrowserRouter>
   );
