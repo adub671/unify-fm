@@ -6,12 +6,15 @@ function CreateStationButton() {
   const [showModal, setShowModal] = useState(false);
   return (
     <div>
-      <i
-        className="fa-solid fa-plus create-station-button"
+      <div
+        className="create-station-button"
         onClick={() => {
           setShowModal(true);
         }}
-      ></i>
+      >
+        <span> Create A Station</span>
+        <i className="fa-solid fa-plus create-station-icon"></i>
+      </div>
 
       {showModal && (
         <Modal

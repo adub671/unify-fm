@@ -89,3 +89,9 @@ form {
   color: red;
   font-size: 12px;
 }
+
+.close-form {
+  position: relative;
+  left: 200px;
+  top: -20px;
+}

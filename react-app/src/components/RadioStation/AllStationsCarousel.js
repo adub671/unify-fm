@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getStations } from "../../store/radioStations";
 import StationCard from "./StationCard";
 import "./Carousel.css";
-import CreateStationButton from "./CreateStationButton";
 
 const AllStationsCarousel = () => {
   const dispatch = useDispatch();
@@ -17,9 +16,7 @@ const AllStationsCarousel = () => {
 
   return (
     <>
-      <div className="carousel-banner">
-        All Stations <CreateStationButton />
-      </div>
+      <div className="carousel-banner">All Stations</div>
       <div className="carousel-container">
         {stations &&
           Object.values(stations)?.map((station, idx) => (

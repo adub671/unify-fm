@@ -95,6 +95,103 @@ def seed_radio_stations():
         additional_label_3="",
 
     )
+    # operator = RadioStation(
+    #     name='Operator Radio',
+    #     admin_id=2,
+    #     stream_url="https://stream-relay-geo.ntslive.net/stream?client=NTSWebApp&t=1669765344306",
+    #     image_url="https://i1.sndcdn.com/avatars-000303236229-opvt9x-t500x500.jpg",
+    #     website_url="https://www.operator-radio.com/",
+    #     chat_url="",
+    #     now_playing_url="https://www.nts.live/api/v2/live",
+    #     calendar_url="",
+    #     additional_link_1="",
+    #     additional_label_1="",
+    #     additional_link_2="",
+    #     additional_label_2="",
+    #     additional_link_3="",
+    #     additional_label_3="",
+
+    # )
+    rinse = RadioStation(
+        name='Rinse FM',
+        admin_id=2,
+        stream_url="https://streamer-uk.rinse.fm:8443/stream",
+        image_url="https://cdn-radiotime-logos.tunein.com/s92775d.png",
+        website_url="https://rinse.fm/",
+        chat_url="",
+        now_playing_url="https://rinse.fm/_next/data/Mp-cYr2q7zwYct9IIxLpp/en/schedule.json",
+        calendar_url="",
+        additional_link_1="",
+        additional_label_1="",
+        additional_link_2="",
+        additional_label_2="",
+        additional_link_3="",
+        additional_label_3="",
+    )
+    worldwide = RadioStation(
+        name='WorldWide FM',
+        admin_id=2,
+        stream_url="https://worldwidefm.out.airtime.pro/worldwidefm_b",
+        image_url="https://scontent-lax3-2.xx.fbcdn.net/v/t1.6435-9/38674327_2095627037178554_3408890189643251712_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=72Mmp1_Itr4AX9Xhlyu&_nc_oc=AQng4XuCsuRxfcqdupo3o1_rigR2Ydo6j6it0JcN0EzRuAA7VzdVC5pKps-Y3x-JLPYh33R-UjVGXHXwBj8-WpaC&_nc_ht=scontent-lax3-2.xx&oh=00_AfC0XxnZKs0Tds9kH0YCZ6cvrFP8o3V0T6Kj6NxIUo4vRg&oe=63B48F3F",
+        website_url="https://worldwidefm.net/",
+        chat_url="http://worldwidefm.chatango.com/",
+        now_playing_url="",
+        calendar_url="",
+        additional_link_1="",
+        additional_label_1="",
+        additional_link_2="",
+        additional_label_2="",
+        additional_link_3="",
+        additional_label_3="",
+    )
+    balamii = RadioStation(
+        name='Balamii',
+        admin_id=2,
+        stream_url="https://balamii.out.airtime.pro/balamii_a",
+        image_url="https://cdn-radiotime-logos.tunein.com/s262611d.png",
+        website_url="https://www.balamii.com",
+        chat_url="https://www.balamii.com/player",
+        now_playing_url="https://balamii.airtime.pro/api/live-info",
+        calendar_url="",
+        additional_link_1="",
+        additional_label_1="",
+        additional_link_2="",
+        additional_label_2="",
+        additional_link_3="",
+        additional_label_3="",
+    )
+    dublab = RadioStation(
+        name='dublab',
+        admin_id=2,
+        stream_url="https://dublab.out.airtime.pro/dublab_a",
+        image_url="https://cdn-profiles.tunein.com/s17176/images/logog.png?t=156260",
+        website_url="https://www.dublab.com/",
+        chat_url="",
+        now_playing_url="https://api-1.dublab.com/wp-json/lazystate/v1/stream?",
+        calendar_url="",
+        additional_link_1="",
+        additional_label_1="",
+        additional_link_2="",
+        additional_label_2="",
+        additional_link_3="",
+        additional_label_3="",
+    )
+    netil = RadioStation(
+        name='Netil Radio',
+        admin_id=2,
+        stream_url="https://netilradio.out.airtime.pro/netilradio_a",
+        image_url="https://cdn-profiles.tunein.com/s284683/images/logog.png?t=157654",
+        website_url="https://www.netilradio.com/",
+        chat_url="http://netil-radio.chatango.com/",
+        now_playing_url="https://netilradio.airtime.pro/api/live-info",
+        calendar_url="",
+        additional_link_1="",
+        additional_label_1="",
+        additional_link_2="",
+        additional_label_2="",
+        additional_link_3="",
+        additional_label_3="",
+    )
 
     db.session.add(kiosk)
     db.session.add(ifmdisco)
@@ -102,6 +199,12 @@ def seed_radio_stations():
     db.session.add(refuge)
     db.session.add(particle)
     db.session.add(nts1)
+    db.session.add(worldwide)
+    db.session.add(balamii)
+    db.session.add(dublab)
+    db.session.add(netil)
+    db.session.add(rinse)
+
     db.session.commit()
 
 

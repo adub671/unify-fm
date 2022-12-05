@@ -103,9 +103,7 @@ const AllStationsCard = ({ station, favorite }) => {
         </div>
         <div className="all-stations-button-container">
           <FavoriteButton station={station} />
-          {station?.admin_id === user?.id && (
-            <EditStationButton station={station} />
-          )}
+
           {station?.website_url && (
             <div className="all-stations-button">
               <a href={station?.website_url}>

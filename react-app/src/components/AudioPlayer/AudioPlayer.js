@@ -66,10 +66,26 @@ export default function AppAudioPlayer() {
     <div className="fixed-audio-container">
       <div className="player-logo">UNIFY FM</div>
       <div className="app-audio-player-container">
+        <div className="now-playing-container">
+          {Object.keys(currentStation).length > 0 ? (
+            <>
+              <div className="now-playing-image-container"></div>
+              <div className="now-playing-title">
+                <span>Station: {currentStation?.name}</span>
+                <div>Now Playing: {nowPlaying}</div>
+              </div>
+            </>
+          ) : (
+            <div className="now-playing-placeholder">
+              <span>Select A Station To Play</span>
+            </div>
+          )}
+        </div>
         <div className="audio-player">
           <AudioPlayer
             autoPlay
             src={currentStation?.stream_url}
+            customAdditionalControls={[]}
             onPlay={() => {
               setPlaying(true);
               console.log(
@@ -87,23 +103,6 @@ export default function AppAudioPlayer() {
             onClickNext={clickNext}
             onClickPrevious={clickPrev}
           />
-        </div>
-        <div className="now-playing-container">
-          {Object.keys(currentStation).length > 0 ? (
-            <>
-              <div className="now-playing-image-container"></div>
-              <div className="now-playing-title">
-                <span>Current Station: {currentStation?.name}</span>
-                <div>Current Show: {nowPlaying}</div>
-              </div>
-            </>
-          ) : (
-            <div className="now-playing-placeholder">
-              <span>Select A Station To Play</span>
-              <br />
-              <span className="audio-player-logo">UNIFY.fm</span>
-            </div>
-          )}
         </div>
       </div>
     </div>

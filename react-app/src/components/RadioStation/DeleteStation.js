@@ -14,7 +14,10 @@ const DeleteStation = ({ station }) => {
 
   return (
     <>
-      <i className="fa-trash-can fa-regular" onClick={handleDelete}></i>
+      <div className="station-page-link" onClick={handleDelete}>
+        <span className="station-page-link-label">Delete </span>
+        <i className="fa-trash-can fa-regular"></i>
+      </div>
     </>
   );
 };

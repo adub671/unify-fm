@@ -29,7 +29,7 @@ const FavoriteStationsCarousel = () => {
   return (
     <>
       {user && (
-        <div>
+        <div className="favorite-carousel-container">
           <div className="carousel-banner">Favorite Stations</div>
           <div className="carousel-container">
             {stations &&
