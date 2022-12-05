@@ -44,11 +44,11 @@ const StationPage = () => {
       const playing = await nowPlayingParser(station?.now_playing_url);
       setNowPlaying(playing);
     })();
-  }, [station]);
+  }, [station, nowPlaying]);
 
   useEffect(() => {
     setPageStation(stations[stationId]);
-  }, [stations]);
+  }, [stations, stationId]);
 
   //Determines Play or Pause Image
   useEffect(() => {
