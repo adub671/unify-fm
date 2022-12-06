@@ -12,14 +12,17 @@ export default function AppAudioPlayer() {
     stationQueue,
     setQueuePosition,
     queuePosition,
+    setStationQueue,
     setPlaying,
     isPlaying,
     player,
   } = useContext(AudioContext);
   const stations = useSelector((state) => state.stations);
   const [nowPlaying, setNowPlaying] = useState("");
+  const [scan, setScan] = useState(false);
 
   const clickNext = () => {
+    console.log("click next activated");
     let newQueuePosition;
     if (stationQueue.length - 1 === queuePosition) {
       newQueuePosition = 0;
@@ -28,6 +31,7 @@ export default function AppAudioPlayer() {
     }
     setQueuePosition(newQueuePosition);
     const nextStation = stations[stationQueue[newQueuePosition]];
+    console.log(queuePosition, newQueuePosition, nextStation, "next station");
     setStation(nextStation);
   };
 
@@ -43,6 +47,40 @@ export default function AppAudioPlayer() {
     const nextStation = stations[stationQueue[newQueuePosition]];
     setStation(nextStation);
   };
+
+  const clickRandom = () => {
+    if (!stationQueue.length) {
+      const stationArr = Object.keys(stations);
+      const newQueuePosition = Math.floor(Math.random() * stationArr.length);
+      setStationQueue(stationArr);
+      const nextStation = stations[stationArr[newQueuePosition]];
+      setStation(nextStation);
+    } else {
+      const newQueuePosition = Math.floor(Math.random() * stationQueue.length);
+      if (newQueuePosition === queuePosition) {
+        clickRandom();
+      }
+      setQueuePosition(newQueuePosition);
+      const nextStation = stations[stationQueue[newQueuePosition]];
+      setStation(nextStation);
+    }
+  };
+
+  const clickScan = () => {
+    if (!scan) {
+      clickNext();
+    }
+    setScan(!scan);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (scan) {
+        clickNext();
+      }
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [scan, queuePosition]);
 
   useEffect(() => {
     (async () => {
@@ -103,6 +141,17 @@ export default function AppAudioPlayer() {
             onClickNext={clickNext}
             onClickPrevious={clickPrev}
           />
+        </div>
+        <div className="audio-player-additional-controls">
+          <div className="random-button" onClick={clickRandom}>
+            <i className="fa fa-random"></i>
+          </div>
+          <div
+            className={scan ? "scan-audio scan-active" : "scan-audio"}
+            onClick={clickScan}
+          >
+            SCAN
+          </div>
         </div>
       </div>
     </div>

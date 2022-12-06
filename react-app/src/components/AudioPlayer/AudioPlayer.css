@@ -55,3 +55,37 @@
   padding-top: 12px;
   padding-left: 50px;
 }
+
+.audio-player-additional-controls {
+  position: fixed;
+  right: 55vw;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+  color: gray;
+
+  height: 60px;
+}
+
+.scan-active {
+  background-color: #fca311;
+
+  border-radius: 4px;
+}
+
+.scan-audio {
+  padding: 5px;
+}
+
+.random-button {
+  padding: 5px;
+}
+
+.random-button:active {
+  background-color: #fca311;
+  border-radius: 4px;
+  padding: 5px;
+}
