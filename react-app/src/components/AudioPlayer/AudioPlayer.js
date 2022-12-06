@@ -102,7 +102,7 @@ export default function AppAudioPlayer() {
 
   return (
     <div className="fixed-audio-container">
-      <div className="player-logo">UNIFY FM</div>
+      <div className="player-logo">UNIFY.FM</div>
       <div className="app-audio-player-container">
         <div className="now-playing-container">
           {Object.keys(currentStation).length > 0 ? (

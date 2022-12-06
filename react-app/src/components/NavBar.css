@@ -1,16 +1,22 @@
 nav {
   background-color: #14213d;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 20fr;
   align-items: center;
+  width: 100vw;
+  color: white;
 }
 
 .link-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  grid-row: 1fr;
   align-items: center;
   margin-left: 20px;
+  border: 1px solid yellow;
 }
 
-.link-container > div > a {
+.nav-link > a {
   text-decoration: none;
   color: white;
 }
@@ -26,18 +32,53 @@ nav {
   cursor: pointer;
   color: #fca311;
 }
+.nav-link > a:hover {
+  cursor: pointer;
+  color: #fca311;
+}
 .link-container > div > a:hover {
   cursor: pointer;
   color: #fca311;
 }
 
+.nav-logo:hover {
+  color: #fca311 !important;
+}
+
+.nav-auth: hover {
+  color: #fca311;
+}
+.nav-link > a:active {
+  cursor: pointer;
+  color: gray;
+}
+.link-container > div > a:active {
+  cursor: pointer;
+  color: gray;
+}
+
+.nav-logo:active {
+  color: gray !important;
+}
 .nav-logo {
   font-family: "Bungee Shade";
-  color: white;
+  color: white !important;
   font-size: 30px;
   justify-self: flex-start;
   margin-left: 20px;
 }
-.nav-logo:hover {
-  color: #fca311;
+
+.nav-auth {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-right: 20px;
+}
+
+.nav-links {
+  display: flex;
+  color: white;
+  margin-left: 20px;
 }

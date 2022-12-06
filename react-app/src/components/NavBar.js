@@ -10,13 +10,23 @@ const NavBar = () => {
 
   return (
     <nav>
-      <div className="nav-logo">UNIFY.FM</div>
-      <div className="link-container">
+      <NavLink to="/" className="nav-logo">
+        UNIFY.FM
+      </NavLink>
+
+      <div className="nav-links">
         <div className="nav-link">
           <NavLink to="/" exact={true} activeClassName="active">
             Home
           </NavLink>
         </div>
+        <div className="nav-link">
+          <NavLink to="/stations" exact={true} activeClassName="active">
+            Stations
+          </NavLink>
+        </div>
+      </div>
+      <div className="nav-auth">
         {!user && (
           <>
             <div className="nav-link">
@@ -28,15 +38,13 @@ const NavBar = () => {
           </>
         )}
 
-        <div className="nav-link">
-          <NavLink to="/stations" exact={true} activeClassName="active">
-            Stations
-          </NavLink>
-        </div>
         {user && (
-          <div className="nav-link">
-            <LogoutButton />
-          </div>
+          <>
+            <div className="nav-link">Welcome {user.username}!</div>
+            <div className="nav-link">
+              <LogoutButton />
+            </div>
+          </>
         )}
       </div>
     </nav>
