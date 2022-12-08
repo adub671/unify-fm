@@ -114,43 +114,42 @@ export default function AppAudioPlayer() {
   return (
     <div className="fixed-audio-container">
       <div className="app-audio-player-container">
-        <div className="custom-audio-elements">
-          <div className="player-logo">UNIFY.FM</div>
-          <div className="custom-audio-controls">
-            <div className="random-button" onClick={clickRandom}>
-              <i className="fa fa-random"></i>
-            </div>
-            {user && currentStation?.name && (
-              <div className="audio-favorite-container">
-                <FavoriteButton station={currentStation} />
-              </div>
-            )}
-            <div
-              className={scan ? "scan-audio scan-active" : "scan-audio"}
-              onClick={clickScan}
-            >
-              SCAN
-            </div>
+        <div className="player-logo">UNIFY.FM</div>
+        {/* <div className="custom-audio-elements"> */}
+        <div className="custom-audio-controls">
+          <div className="random-button" onClick={clickRandom}>
+            <i className="fa fa-random"></i>
           </div>
-          <div className="main-controls-spacer"></div>
-          <div className="now-playing-container">
-            {currentStation && Object.keys(currentStation).length > 0 ? (
-              <>
-                <div className="now-playing-image-container"></div>
+          <div
+            className={scan ? "scan-audio scan-active" : "scan-audio"}
+            onClick={clickScan}
+          >
+            SCAN
+          </div>
 
-                <div className="now-playing-title">
-                  <span>Station: {currentStation?.name}</span>
-                  <div>Now Playing: {nowPlaying}</div>
-                </div>
-              </>
-            ) : (
-              <div className="now-playing-placeholder">
-                <span>Select A Station To Play</span>
-              </div>
-            )}
+          <div className="audio-favorite-container">
+            <FavoriteButton station={currentStation} />
           </div>
-          <div className="volume-spacer"></div>
         </div>
+        <div className="volume-spacer"></div>
+        <div className="now-playing-container">
+          {currentStation && Object.keys(currentStation).length > 0 ? (
+            <>
+              <div className="now-playing-image-container"></div>
+
+              <div className="now-playing-title">
+                <span>Station: {currentStation?.name}</span>
+                <div>Now Playing: {nowPlaying}</div>
+              </div>
+            </>
+          ) : (
+            <div className="now-playing-placeholder">
+              <span>Select A Station To Play</span>
+            </div>
+          )}
+        </div>
+        <div className="volume-spacer"></div>
+        {/* </div> */}
         <div className="audio-player">
           <AudioPlayer
             autoPlay

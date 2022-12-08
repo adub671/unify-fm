@@ -31,6 +31,10 @@ a:hover {
   color: gray;
 }
 
+i:hover {
+  cursor: pointer !important;
+}
+
 body {
   font-family: "Alfa Slab One";
 }

@@ -28,6 +28,9 @@ const FavoriteButton = ({ station, isButton }) => {
   }, [dispatch]);
 
   const handleFavorite = async () => {
+    if (!station.name) {
+      return alert("Error Favoriting Station, No Station Selected");
+    }
     if (user) {
       if (favorited) {
         await dispatch(deleteFavorite(station));
@@ -55,8 +58,9 @@ const FavoriteButton = ({ station, isButton }) => {
           ></i>
         </div>
       ) : (
-        <div onClick={handleFavorite}>
+        <div onClick={handleFavorite} className="favorite-icon-only">
           <i
+            alt="Click To Favorite"
             className={
               favorited
                 ? "favorited-icon fa-solid fa-heart favorite-icon"
