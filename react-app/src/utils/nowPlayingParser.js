@@ -18,8 +18,11 @@ export const nowPlayingParser = async (nowPlayingUrl) => {
       ) {
         nowPlaying = nowPlayingData.shows.current.name;
       }
-      if (nowPlayingUrl.startsWith("https://azuracast")) {
-        nowPlaying = nowPlayingData.now_playing.song.text;
+      if (nowPlayingUrl.startsWith("https://azuracast.particle")) {
+        nowPlaying =
+          nowPlayingData.now_playing.streamer +
+          " - " +
+          nowPlayingData.now_playing.song.title;
       }
       if (nowPlayingUrl.startsWith("https://www.nts.live/")) {
         nowPlaying = nowPlayingData.results[0].now.broadcast_title;
@@ -31,16 +34,20 @@ export const nowPlayingParser = async (nowPlayingUrl) => {
         nowPlaying = nowPlayingData["/stream"]["current"]["combo"];
       }
       if (nowPlayingUrl === "https://netilradio.airtime.pro/api/live-info") {
-        nowPlaying = nowPlayingData.current.name;
+        nowPlaying =
+          nowPlayingData.currentShow[0].name + nowPlayingData.current.name;
       }
       if (nowPlayingUrl === "https://balamii.airtime.pro/api/live-info") {
-        nowPlaying = nowPlayingData.currentShow[0].name;
+        nowPlaying = nowPlayingData.current.name;
       }
       if (
         nowPlayingUrl ===
         "https://rinse.fm/_next/data/Mp-cYr2q7zwYct9IIxLpp/en/schedule.json"
       ) {
         nowPlaying = nowPlayingData.pageProps.episodesData.entries.title;
+      }
+      if (nowPlayingUrl.startsWith("https://feed.tunein")) {
+        nowPlaying = nowPlayingData.Header.Subtitle;
       }
     } else {
       nowPlaying = "...";

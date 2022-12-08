@@ -3,6 +3,7 @@ import AudioPlayer from "react-h5-audio-player";
 import { useSelector } from "react-redux";
 import { AudioContext } from "../../context/Audio";
 import { nowPlayingParser } from "../../utils/nowPlayingParser";
+import FavoriteButton from "../RadioStation/FavoriteButton";
 import "./AudioPlayer.css";
 
 export default function AppAudioPlayer() {
@@ -15,14 +16,15 @@ export default function AppAudioPlayer() {
     setStationQueue,
     setPlaying,
     isPlaying,
+
     player,
   } = useContext(AudioContext);
   const stations = useSelector((state) => state.stations);
+  const user = useSelector((state) => state.session.user);
   const [nowPlaying, setNowPlaying] = useState("");
   const [scan, setScan] = useState(false);
 
   const clickNext = () => {
-    console.log("click next activated");
     let newQueuePosition;
     if (stationQueue.length - 1 === queuePosition) {
       newQueuePosition = 0;
@@ -67,8 +69,17 @@ export default function AppAudioPlayer() {
   };
 
   const clickScan = () => {
-    if (!scan) {
-      clickNext();
+    if (!stationQueue.length) {
+      const stationArr = Object.keys(stations);
+      setStationQueue(stationArr);
+      const firstStation = stations["1"];
+      console.log("no length", stationArr, stations, firstStation);
+      setQueuePosition(0);
+      setStation(firstStation);
+    } else {
+      if (!scan) {
+        clickNext();
+      }
     }
     setScan(!scan);
   };
@@ -102,22 +113,43 @@ export default function AppAudioPlayer() {
 
   return (
     <div className="fixed-audio-container">
-      <div className="player-logo">UNIFY.FM</div>
       <div className="app-audio-player-container">
-        <div className="now-playing-container">
-          {Object.keys(currentStation).length > 0 ? (
-            <>
-              <div className="now-playing-image-container"></div>
-              <div className="now-playing-title">
-                <span>Station: {currentStation?.name}</span>
-                <div>Now Playing: {nowPlaying}</div>
-              </div>
-            </>
-          ) : (
-            <div className="now-playing-placeholder">
-              <span>Select A Station To Play</span>
+        <div className="custom-audio-elements">
+          <div className="player-logo">UNIFY.FM</div>
+          <div className="custom-audio-controls">
+            <div className="random-button" onClick={clickRandom}>
+              <i className="fa fa-random"></i>
             </div>
-          )}
+            {user && currentStation?.name && (
+              <div className="audio-favorite-container">
+                <FavoriteButton station={currentStation} />
+              </div>
+            )}
+            <div
+              className={scan ? "scan-audio scan-active" : "scan-audio"}
+              onClick={clickScan}
+            >
+              SCAN
+            </div>
+          </div>
+          <div className="main-controls-spacer"></div>
+          <div className="now-playing-container">
+            {currentStation && Object.keys(currentStation).length > 0 ? (
+              <>
+                <div className="now-playing-image-container"></div>
+
+                <div className="now-playing-title">
+                  <span>Station: {currentStation?.name}</span>
+                  <div>Now Playing: {nowPlaying}</div>
+                </div>
+              </>
+            ) : (
+              <div className="now-playing-placeholder">
+                <span>Select A Station To Play</span>
+              </div>
+            )}
+          </div>
+          <div className="volume-spacer"></div>
         </div>
         <div className="audio-player">
           <AudioPlayer
@@ -141,17 +173,6 @@ export default function AppAudioPlayer() {
             onClickNext={clickNext}
             onClickPrevious={clickPrev}
           />
-        </div>
-        <div className="audio-player-additional-controls">
-          <div className="random-button" onClick={clickRandom}>
-            <i className="fa fa-random"></i>
-          </div>
-          <div
-            className={scan ? "scan-audio scan-active" : "scan-audio"}
-            onClick={clickScan}
-          >
-            SCAN
-          </div>
         </div>
       </div>
     </div>

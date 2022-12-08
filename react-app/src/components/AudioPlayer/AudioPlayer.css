@@ -2,18 +2,11 @@
   position: fixed;
   width: 100vw;
   bottom: 0px;
-}
-
-.audio-player-logo {
-  font-family: "Bungee Shade";
-  font-weight: bold;
+  height: max-content;
 }
 
 .player-logo {
   font-family: "Bungee Shade";
-  position: fixed;
-  bottom: 0px;
-  left: 200px;
   font-size: 30px;
   font-weight: bold;
 }
@@ -22,24 +15,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-}
-
-.now-playing-container {
-  width: 600px;
-  height: 30px;
-  white-space: nowrap;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  padding-block: 10px;
-
-  border-bottom: none;
-  position: fixed;
-  bottom: 15px;
-  right: 100px;
-  overflow: hidden;
 }
 
 .audio-player {
@@ -54,20 +29,6 @@
   display: flex;
   padding-top: 12px;
   padding-left: 50px;
-}
-
-.audio-player-additional-controls {
-  position: fixed;
-  right: 55vw;
-  bottom: 0px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-  font-size: 18px;
-  color: gray;
-
-  height: 60px;
 }
 
 .scan-active {
@@ -92,4 +53,49 @@
 
 .rhap_volume-controls {
   margin-right: 15px;
+}
+.rhap_main-controls {
+  z-index: 100;
+}
+
+.custom-audio-elements {
+  position: fixed;
+  bottom: 0px;
+  height: 68px;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 30vw 14vw 128px 10fr 120px;
+  grid-template-rows: 1fr;
+  align-items: center;
+}
+
+.custom-audio-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: gray;
+  gap: 15px;
+  border: 1px solid red;
+  align-items: center;
+  font-size: 20px;
+}
+
+.player-logo {
+  margin-left: 40px;
+}
+
+.now-playing-container {
+  width: 600px;
+
+  white-space: nowrap;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  overflow: hidden;
+}
+
+.audio-favorite-container > div > i {
+  color: gray;
 }

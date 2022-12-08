@@ -1,5 +1,5 @@
 .favorited-icon {
-  color: red;
+  color: red !important;
 }
 .not-favorited-icon {
   color: white;
