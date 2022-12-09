@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import AuthModal from "./auth/AuthModal";
 import LogoutButton from "./auth/LogoutButton";
 import "./NavBar.css";
+import SearchBar from "./SearchBar";
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
@@ -25,6 +26,9 @@ const NavBar = () => {
             Stations
           </NavLink>
         </div>
+      </div>
+      <div className="search-bar-container">
+        <SearchBar />
       </div>
       <div className="nav-auth">
         {!user && (

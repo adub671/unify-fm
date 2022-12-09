@@ -1,0 +1,40 @@
+.search-results-container {
+  position: absolute;
+  top: 67px;
+  background-color: white;
+  width: max-content;
+  min-width: 300px;
+  border: 1px solid gray;
+  margin-left: 15px;
+}
+
+.search-result:hover {
+  background-color: gray;
+  color: #fca311 !important;
+}
+
+.search-input {
+  padding: 10px;
+  border-radius: 30px;
+  font-family: "Alfa Slab One";
+  font-weight: lighter;
+  color: black;
+  border: none;
+  width: 20vw;
+}
+
+.search-result {
+  color: black;
+  padding: 10px;
+}
+.search-division {
+  border-bottom: 1px solid gray;
+}
+
+.search-bar-container {
+  margin-left: 20px;
+}
+
+.search-result-fail {
+  color: gray !important;
+}
