@@ -1,7 +1,7 @@
 nav {
   background-color: #14213d;
   display: grid;
-  grid-template-columns: 1fr 1fr 20fr;
+  grid-template-columns: 1fr 1fr 1fr 20fr;
   align-items: center;
   width: 100vw;
   color: white;
