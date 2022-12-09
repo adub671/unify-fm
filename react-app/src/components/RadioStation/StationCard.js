@@ -54,40 +54,36 @@ const StationCard = ({ station, favorite }) => {
     }
   };
   return (
-    <>
-      <div className="station-card-container">
-        <div className="station-card-image-container">
-          <div
-            className="station-card-image-play-container"
-            onClick={playStation}
-          >
-            {play === true ? (
-              <i className="fa-solid fa-pause station-card-image-play-pause">
-                {" "}
-              </i>
-            ) : (
-              <i className="fa-solid fa-play station-card-image-play-pause"></i>
-            )}
-          </div>
-          {!imageError ? (
-            <img
-              className="station-card-image"
-              src={station?.image_url}
-              alt="station cards"
-              onError={() => setImageError(true)}
-              onClick={playStation}
-            />
+    <div className="station-card-container">
+      <div className="station-card-image-container">
+        <div
+          className="station-card-image-play-container"
+          onClick={playStation}
+        >
+          {play === true ? (
+            <i className="fa-solid fa-pause station-card-image-play-pause"> </i>
           ) : (
-            <div className="station-card-image-default">
-              <span>{station?.name}</span>
-            </div>
+            <i className="fa-solid fa-play station-card-image-play-pause"></i>
           )}
         </div>
-        <NavLink to={`/station/${station?.id}`} exact={true}>
-          <div className="card-station-name">{station?.name}</div>
-        </NavLink>
+        {!imageError ? (
+          <img
+            className="station-card-image"
+            src={station?.image_url}
+            alt="station cards"
+            onError={() => setImageError(true)}
+            onClick={playStation}
+          />
+        ) : (
+          <div className="station-card-image-default">
+            <span>{station?.name}</span>
+          </div>
+        )}
       </div>
-    </>
+      <NavLink to={`/station/${station?.id}`} exact={true}>
+        <div className="card-station-name">{station?.name}</div>
+      </NavLink>
+    </div>
   );
 };
 

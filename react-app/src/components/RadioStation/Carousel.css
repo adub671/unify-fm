@@ -1,9 +1,10 @@
 .carousel-container {
   display: flex;
-  flex-direction: row;
-  width: 90%;
-  overflow-x: scroll;
-  margin-inline: auto;
+  justify-content: center;
+  /* flex-direction: row;  */
+  /* width: 90%; */
+  /* overflow-x: scroll; */
+  /* margin-inline: auto;  */
 }
 
 .carousel-banner {
@@ -15,10 +16,18 @@
   justify-content: center;
   color: white;
   font-family: "Alfa Slab One";
-
   font-size: 30px;
 }
 
 .favorite-carousel-container {
   margin-block: 25px;
+}
+
+.slick-slider {
+  width: 90%;
+}
+
+.slick-arrow {
+  background-color: black !important;
+  height: 100%;
 }
