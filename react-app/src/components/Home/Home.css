@@ -35,3 +35,9 @@
   background-color: black;
   padding-inline: 10px;
 }
+
+.carousel-spacer {
+  height: 50px;
+  background-image: url("https://img.freepik.com/free-photo/yellow-liquid-marble-background-handmade-colorful-flowing-texture-experimental-art_53876-108073.jpg?w=2000");
+  background-position: 0px;
+}

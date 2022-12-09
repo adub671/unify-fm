@@ -21,7 +21,7 @@
 }
 
 .favorite-carousel-container {
-  margin-block: 25px;
+  /* margin-block: 25px; */
 }
 
 .slick-slider {
@@ -29,6 +29,23 @@
 }
 
 .slick-arrow {
-  background-color: rgb(230, 230, 230) !important;
+  background-color: rgb(230, 230, 230);
   height: 100%;
+}
+
+.slick-arrow:active {
+  background-color: gray !important;
+}
+
+.slick-arrow:before {
+  height: 100% !important;
+}
+
+.slick-next:focus,
+.slick-prev:focus {
+  background-color: rgb(230, 230, 230) !important;
+}
+
+.slick-arrow:hover {
+  background-color: rgb(230, 230, 230);
 }

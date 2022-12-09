@@ -14,6 +14,7 @@ function Home() {
           </div>
         </div>
         <AllStationsCarousel />
+        <div className="carousel-spacer"></div>
 
         <FavoriteStationsCarousel />
       </div>
