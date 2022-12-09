@@ -1,6 +1,7 @@
 .carousel-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   /* flex-direction: row;  */
   /* width: 90%; */
   /* overflow-x: scroll; */
@@ -24,10 +25,10 @@
 }
 
 .slick-slider {
-  width: 90%;
+  width: calc(100% - 50px);
 }
 
 .slick-arrow {
-  background-color: black !important;
+  background-color: rgb(230, 230, 230) !important;
   height: 100%;
 }

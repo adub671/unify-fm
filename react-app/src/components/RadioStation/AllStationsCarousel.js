@@ -22,36 +22,32 @@ const AllStationsCarousel = () => {
         {stations && (
           <Slider
             slidesToShow={5}
-            dots={true}
-            centerMode={true}
+            dots={false}
             responsive={[
               {
-                breakpoint: 1400,
+                breakpoint: 1550,
                 settings: {
                   slidesToShow: 4,
-
-                  infinite: true,
-                  dots: true,
                 },
               },
               {
-                breakpoint: 1100,
+                breakpoint: 1340,
                 settings: {
                   slidesToShow: 3,
                 },
               },
               {
-                breakpoint: 900,
+                breakpoint: 800,
                 settings: {
                   slidesToShow: 2,
                 },
               },
-              // {
-              //   breakpoint: 750,
-              //   settings: {
-              //     slidesToShow: 1,
-              //   },
-              // },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 1,
+                },
+              },
             ]}
           >
             {Object.values(stations)?.map((station, idx) => (
