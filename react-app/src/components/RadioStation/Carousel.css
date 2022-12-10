@@ -1,9 +1,11 @@
 .carousel-container {
   display: flex;
-  flex-direction: row;
-  width: 90%;
-  overflow-x: scroll;
-  margin-inline: auto;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: row;  */
+  /* width: 90%; */
+  /* overflow-x: scroll; */
+  /* margin-inline: auto;  */
 }
 
 .carousel-banner {
@@ -15,10 +17,35 @@
   justify-content: center;
   color: white;
   font-family: "Alfa Slab One";
-
   font-size: 30px;
 }
 
 .favorite-carousel-container {
-  margin-block: 25px;
+  /* margin-block: 25px; */
+}
+
+.slick-slider {
+  width: calc(100% - 50px);
+}
+
+.slick-arrow {
+  background-color: rgb(230, 230, 230);
+  height: 100%;
+}
+
+.slick-arrow:active {
+  background-color: gray !important;
+}
+
+.slick-arrow:before {
+  height: 100% !important;
+}
+
+.slick-next:focus,
+.slick-prev:focus {
+  background-color: rgb(230, 230, 230) !important;
+}
+
+.slick-arrow:hover {
+  background-color: rgb(230, 230, 230);
 }

@@ -4,6 +4,7 @@ import { getStations } from "../../store/radioStations";
 import StationCard from "./StationCard";
 import "./Carousel.css";
 import { getFavoriteStations } from "../../store/favoriteStations";
+import Slider from "react-slick";
 
 const FavoriteStationsCarousel = () => {
   const dispatch = useDispatch();
@@ -32,10 +33,45 @@ const FavoriteStationsCarousel = () => {
         <div className="favorite-carousel-container">
           <div className="carousel-banner">Favorite Stations</div>
           <div className="carousel-container">
-            {stations &&
-              faveStations?.map((station) => (
-                <StationCard station={station} favorite={true} />
-              ))}
+            {stations && (
+              <Slider
+                slidesToShow={5}
+                arrows={true}
+                dots={false}
+                rows={1}
+                infinite={faveStations?.length > 4}
+                responsive={[
+                  {
+                    breakpoint: 1550,
+                    settings: {
+                      slidesToShow: 4,
+                    },
+                  },
+                  {
+                    breakpoint: 1340,
+                    settings: {
+                      slidesToShow: 3,
+                    },
+                  },
+                  {
+                    breakpoint: 800,
+                    settings: {
+                      slidesToShow: 2,
+                    },
+                  },
+                  {
+                    breakpoint: 600,
+                    settings: {
+                      slidesToShow: 1,
+                    },
+                  },
+                ]}
+              >
+                {faveStations?.map((station, idx) => (
+                  <StationCard station={station} favorite={true} key={idx} />
+                ))}
+              </Slider>
+            )}
           </div>
         </div>
       )}
