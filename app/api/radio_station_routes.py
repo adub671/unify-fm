@@ -2,6 +2,7 @@
 from flask import Blueprint, request
 from app.models import RadioStation, User, db
 from ..forms import StationForm, EditStationForm
+from ..utils.now_playing_parser import now_playing_parser
 
 radio_station_routes = Blueprint('radio_station', __name__)
 
@@ -92,3 +93,13 @@ def update_station(station_id):
             return station.to_dict()
         return {"errors": form.errors}
     return 'Station Not Found'
+
+
+@radio_station_routes.route('/<int:station_id>/nowplaying')
+def get_now_playing(station_id):
+    """
+    Query for one radio station
+    """
+    station = RadioStation.query.get(station_id)
+    return now_playing_parser(station.to_dict())
+    # return 'Station Not Found'
