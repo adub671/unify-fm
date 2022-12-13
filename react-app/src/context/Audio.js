@@ -11,7 +11,7 @@ export default function AudioProvider({ children }) {
   const player = useRef();
 
   (async () => {
-    const nowPlaying = await nowPlayingParser(currentStation?.now_playing_url);
+    const nowPlaying = await nowPlayingParser(currentStation);
 
     if (currentStation?.name && "mediaSession" in navigator) {
       navigator.mediaSession.metadata = new window.MediaMetadata({

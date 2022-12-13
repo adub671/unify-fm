@@ -25,7 +25,7 @@ const AllStationsCard = ({ station, favorite }) => {
   const [nowPlaying, setNowPlaying] = useState("");
   useEffect(() => {
     (async () => {
-      const playing = await nowPlayingParser(station?.now_playing_url);
+      const playing = await nowPlayingParser(station);
       setNowPlaying(playing);
     })();
   }, [station]);

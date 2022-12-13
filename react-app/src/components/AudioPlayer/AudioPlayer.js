@@ -37,6 +37,12 @@ export default function AppAudioPlayer() {
     setStation(nextStation);
   };
 
+  const clickPlay = () => {
+    if (!currentStation.name) {
+      clickRandom();
+    }
+  };
+
   const clickPrev = () => {
     let newQueuePosition;
 
@@ -95,7 +101,7 @@ export default function AppAudioPlayer() {
 
   useEffect(() => {
     (async () => {
-      const playing = await nowPlayingParser(currentStation?.now_playing_url);
+      const playing = await nowPlayingParser(currentStation);
       setNowPlaying(playing);
     })();
   }, [currentStation]);
@@ -171,6 +177,7 @@ export default function AppAudioPlayer() {
             showJumpControls={false}
             onClickNext={clickNext}
             onClickPrevious={clickPrev}
+            ocClickPlay={clickPlay}
           />
         </div>
       </div>
