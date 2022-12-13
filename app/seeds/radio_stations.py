@@ -91,7 +91,22 @@ def seed_radio_stations():
         additional_label_2="",
         additional_link_3="",
         additional_label_3="",
-
+    )
+    nts2 = RadioStation(
+        name='NTS 2',
+        admin_id=2,
+        stream_url="https://stream-relay-geo.ntslive.net/stream2?client=NTSWebApp&t=1670930609260",
+        image_url="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/NTS_Radio_logo.svg/1280px-NTS_Radio_logo.svg.png",
+        website_url="https://www.nts.live",
+        chat_url="https://www.nts.live/chat/1",
+        now_playing_url="https://www.nts.live/api/v2/live",
+        calendar_url="",
+        additional_link_1="",
+        additional_label_1="",
+        additional_link_2="",
+        additional_label_2="",
+        additional_link_3="",
+        additional_label_3="",
     )
     # operator = RadioStation(
     #     name='Operator Radio',
