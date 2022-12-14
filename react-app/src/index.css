@@ -4,7 +4,8 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  min-height: 70vh;
+  /* min-height: 70vh; */
+  height: min-content;
 }
 
 #root {
@@ -12,11 +13,12 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  height: 100%;
   background-image: url("https://img.freepik.com/free-photo/yellow-liquid-marble-background-handmade-colorful-flowing-texture-experimental-art_53876-108073.jpg?w=2000");
 }
 
 .bottom-spacer {
-  height: 200px;
+  height: 155px;
   background-color: white;
   width: 80vw;
   margin: auto;
