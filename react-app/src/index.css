@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
   height: 100%;
   background-image: url("https://img.freepik.com/free-photo/yellow-liquid-marble-background-handmade-colorful-flowing-texture-experimental-art_53876-108073.jpg?w=2000");
 }
@@ -20,7 +21,7 @@
 .bottom-spacer {
   height: 155px;
   background-color: white;
-  width: 80vw;
+  width: 100vw;
   margin: auto;
   background-image: url("https://img.freepik.com/free-photo/yellow-liquid-marble-background-handmade-colorful-flowing-texture-experimental-art_53876-108073.jpg?w=2000");
   background-position: 0px;
@@ -40,6 +41,7 @@ i:hover {
 
 body {
   font-family: "Alfa Slab One";
+  width: 100vw;
 }
 
 /* SCROLL BAR */
@@ -64,55 +66,115 @@ body {
 }
 
 /* SCROLLING TEXT */
-
-.scroll-container {
-  border: 3px solid black;
-  border-radius: 5px;
+#scroll-container {
   overflow: hidden;
 }
 
-.scroll-text {
-  text-align: right;
-
+#scroll-text {
   /* animation properties */
-  -moz-transform: translateX(-100%);
-  -webkit-transform: translateX(-100%);
-  transform: translateX(-100%);
+  width: max-content !important;
+  -moz-transform: translateX(10%);
+  -webkit-transform: translateX(10%);
+  transform: translateX(10%);
 
-  -moz-animation: my-animation 15s linear infinite;
-  -webkit-animation: my-animation 15s linear infinite;
-  animation: my-animation 15s linear infinite;
+  -moz-animation: my-animation 10s linear infinite;
+  -webkit-animation: my-animation 10s linear infinite;
+  animation: my-animation 10s linear infinite;
 }
 
 /* for Firefox */
-@-moz-keyframes my-animation {
+/* @-moz-keyframes my-animation {
   from {
-    -moz-transform: translateX(-100%);
+    -moz-transform: translateX(10%);
   }
   to {
-    -moz-transform: translateX(100%);
+    -moz-transform: translateX(-200%);
   }
-}
+} */
 
 /* for Chrome */
-@-webkit-keyframes my-animation {
+/* @-webkit-keyframes my-animation {
   from {
-    -webkit-transform: translateX(-100%);
+    -webkit-transform: translateX(10%);
   }
   to {
-    -webkit-transform: translateX(100%);
+    -webkit-transform: translateX(-200%);
   }
-}
+} */
 
 @keyframes my-animation {
   from {
+    -moz-transform: translateX(10%);
+    -webkit-transform: translateX(10%);
+    transform: translateX(10%);
+  }
+  to {
     -moz-transform: translateX(-100%);
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
   }
-  to {
+}
+
+#scroll-text-2 {
+  /* animation properties */
+  position: relative;
+  top: -28px;
+  width: max-content !important;
+  -moz-transform: translateX(120%);
+  -webkit-transform: translateX(120%);
+  transform: translateX(120%);
+
+  -moz-animation: my-animation-2 10s linear infinite;
+  -webkit-animation: my-animation-2 10s linear infinite;
+  animation: my-animation-2 10s linear infinite;
+}
+
+/* for Firefox */
+/* @-moz-keyframes my-animation-2 {
+  from {
     -moz-transform: translateX(100%);
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
   }
+  to {
+    -moz-transform: translateX(20%);
+  }
+} */
+
+/* for Chrome */
+/* @-webkit-keyframes my-animation-2 {
+  from {
+    -webkit-transform: translateX(100%);
+  }
+  to {
+    -webkit-transform: translateX(-10%);
+  }
+} */
+
+@keyframes my-animation-2 {
+  from {
+    -moz-transform: translateX(120%);
+    -webkit-transform: translateX(120%);
+    transform: translateX(120%);
+  }
+  to {
+    -moz-transform: translateX(10%);
+    -webkit-transform: translateX(10%);
+    transform: translateX(10%);
+  }
+}
+
+#scroll-container:hover #scroll-text {
+  -moz-animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+#scroll-container:hover #scroll-text-2 {
+  -moz-animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+.now-playing-scroll {
+  -moz-animation: my-animation-2 30s linear infinite !important;
+  -webkit-animation: my-animation-2 30s linear infinite !important;
+  animation: my-animation-2 30s linear infinite !important;
 }

@@ -37,6 +37,7 @@
   font-size: 20px;
   text-align: center;
   padding-top: 5px;
+  height: 60px;
 }
 
 .all-stations-card-container {
@@ -73,16 +74,26 @@
 }
 
 .all-stations-container {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
   /* grid-template-columns: 300px 300px 300px; */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(4, 300px);
   /* grid-column-gap: 100px; */
-  max-width: 1000px;
-  gap: 50px;
+  /* width: 100%;
+  gap: 25px;  */
   /* display: flex;
   /* height: 100vh;
   white-space: wrap; */
 }
+
+/* @media only screen and (max-width: 1600px) {
+  .all-stations-container {
+    grid-template-columns: repeat(3, 300px);
+    gap: calc(100% - 800px);
+  }
+} */
 
 .all-stations-button-container {
   display: flex;
@@ -130,6 +141,7 @@ a {
   margin-top: -5px;
   max-height: 90px;
   overflow: hidden;
+  height: 90px;
 }
 
 .create-station-button {

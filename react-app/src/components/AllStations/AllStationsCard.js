@@ -97,9 +97,26 @@ const AllStationsCard = ({ station, favorite }) => {
         </div>
         <div className="all-stations-text-container">
           <NavLink to={`/station/${station?.id}`} exact={true}>
-            <div className="all-stations-card-name">{station?.name}</div>
+            <div className="all-stations-card-name" id="scroll-container">
+              <div id={station?.name?.length > 24 && "scroll-text"}>
+                {station?.name}
+              </div>
+              {station?.name?.length > 24 && (
+                <div id={"scroll-text-2"}>{station?.name}</div>
+              )}
+            </div>
           </NavLink>
-          <div className="all-stations-now-playing-container">{nowPlaying}</div>
+          <div
+            className="all-stations-now-playing-container"
+            id="scroll-container"
+          >
+            <div id={nowPlaying?.length > 24 && "scroll-text"}>
+              {nowPlaying}
+            </div>
+            {nowPlaying?.length > 24 && (
+              <div id={"scroll-text-2"}>{nowPlaying}</div>
+            )}
+          </div>
         </div>
         <div className="all-stations-button-container">
           <FavoriteButton station={station} />
