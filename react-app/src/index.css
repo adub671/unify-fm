@@ -80,6 +80,9 @@ body {
   -moz-animation: my-animation 10s linear infinite;
   -webkit-animation: my-animation 10s linear infinite;
   animation: my-animation 10s linear infinite;
+  -moz-animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 /* for Firefox */
@@ -104,9 +107,9 @@ body {
 
 @keyframes my-animation {
   from {
-    -moz-transform: translateX(10%);
-    -webkit-transform: translateX(10%);
-    transform: translateX(10%);
+    -moz-transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
   }
   to {
     -moz-transform: translateX(-100%);
@@ -127,6 +130,9 @@ body {
   -moz-animation: my-animation-2 10s linear infinite;
   -webkit-animation: my-animation-2 10s linear infinite;
   animation: my-animation-2 10s linear infinite;
+  -moz-animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 /* for Firefox */
@@ -151,26 +157,26 @@ body {
 
 @keyframes my-animation-2 {
   from {
-    -moz-transform: translateX(120%);
-    -webkit-transform: translateX(120%);
-    transform: translateX(120%);
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
   }
   to {
-    -moz-transform: translateX(10%);
-    -webkit-transform: translateX(10%);
-    transform: translateX(10%);
+    -moz-transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
   }
 }
 
 #scroll-container:hover #scroll-text {
-  -moz-animation-play-state: paused;
-  -webkit-animation-play-state: paused;
-  animation-play-state: paused;
+  -moz-animation-play-state: running;
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
 }
 #scroll-container:hover #scroll-text-2 {
-  -moz-animation-play-state: paused;
-  -webkit-animation-play-state: paused;
-  animation-play-state: paused;
+  -moz-animation-play-state: running;
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
 }
 
 .now-playing-scroll {
