@@ -146,13 +146,9 @@ export default function AppAudioPlayer() {
 
               <div className="now-playing-title">
                 <span>Station: {currentStation?.name}</span>
-                <div>
-                  Now Playing:{" "}
-                  <div className="scroll-container-audio">
-                    <div className="scroll-text-audio">
-                      <Marquee text={nowPlaying} length={40} />
-                    </div>
-                  </div>
+                <div className="now-playing-container-scroll">
+                  <span>Now Playing: &#160;</span>{" "}
+                  <Marquee text={nowPlaying} length={24} />
                 </div>
               </div>
             </>
