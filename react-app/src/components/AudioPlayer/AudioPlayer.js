@@ -3,6 +3,7 @@ import AudioPlayer from "react-h5-audio-player";
 import { useSelector } from "react-redux";
 import { AudioContext } from "../../context/Audio";
 import { nowPlayingParser } from "../../utils/nowPlayingParser";
+import Marquee from "../Marquee";
 import FavoriteButton from "../RadioStation/FavoriteButton";
 import "./AudioPlayer.css";
 
@@ -145,7 +146,14 @@ export default function AppAudioPlayer() {
 
               <div className="now-playing-title">
                 <span>Station: {currentStation?.name}</span>
-                <div>Now Playing: {nowPlaying}</div>
+                <div>
+                  Now Playing:{" "}
+                  <div className="scroll-container-audio">
+                    <div className="scroll-text-audio">
+                      <Marquee text={nowPlaying} length={40} />
+                    </div>
+                  </div>
+                </div>
               </div>
             </>
           ) : (

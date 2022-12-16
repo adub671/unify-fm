@@ -37,7 +37,7 @@
   font-size: 20px;
   text-align: center;
   padding-top: 5px;
-  height: 60px;
+  height: 30px;
 }
 
 .all-stations-card-container {
@@ -141,7 +141,7 @@ a {
   margin-top: -5px;
   max-height: 90px;
   overflow: hidden;
-  height: 90px;
+  height: 60px;
 }
 
 .create-station-button {

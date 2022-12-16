@@ -159,3 +159,7 @@
     width: max-content;
   }
 }
+
+.scroll-text-audio {
+  display: inline;
+}
