@@ -41,7 +41,7 @@
 }
 
 .all-stations-card-container {
-  width: max-content;
+  width: 302px;
   height: 450px;
 }
 
@@ -142,6 +142,7 @@ a {
   max-height: 90px;
   overflow: hidden;
   height: 60px;
+  padding-inline: 10px;
 }
 
 .create-station-button {

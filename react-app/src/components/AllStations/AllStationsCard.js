@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { AudioContext } from "../../context/Audio";
 import { nowPlayingParser } from "../../utils/nowPlayingParser";
+import Marquee from "../Marquee";
 import EditStationButton from "../RadioStation/EditStationButton";
 import FavoriteButton from "../RadioStation/FavoriteButton";
 import User from "../User";
@@ -97,16 +98,17 @@ const AllStationsCard = ({ station, favorite }) => {
         </div>
         <div className="all-stations-text-container">
           <NavLink to={`/station/${station?.id}`} exact={true}>
-            <div className="all-stations-card-name" id="scroll-container">
+            {/* <div className="all-stations-card-name" id="scroll-container">
               <div id={station?.name?.length > 24 && "scroll-text"}>
                 {station?.name}
               </div>
               {station?.name?.length > 24 && (
                 <div id={"scroll-text-2"}>{station?.name}</div>
               )}
-            </div>
+            </div> */}
+            <Marquee text={station?.name} length={24} />
           </NavLink>
-          <div
+          {/* <div
             className="all-stations-now-playing-container"
             id="scroll-container"
           >
@@ -116,7 +118,8 @@ const AllStationsCard = ({ station, favorite }) => {
             {nowPlaying?.length > 24 && (
               <div id={"scroll-text-2"}>{nowPlaying}</div>
             )}
-          </div>
+          </div> */}
+          <Marquee text={nowPlaying} length={24} />
         </div>
         <div className="all-stations-button-container">
           <FavoriteButton station={station} />
