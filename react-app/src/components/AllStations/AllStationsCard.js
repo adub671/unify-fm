@@ -106,7 +106,9 @@ const AllStationsCard = ({ station, favorite }) => {
                 <div id={"scroll-text-2"}>{station?.name}</div>
               )}
             </div> */}
+            <div className="all-stations-card-station-name-container">
             <Marquee text={station?.name} length={24} />
+            </div>
           </NavLink>
           {/* <div
             className="all-stations-now-playing-container"

@@ -129,6 +129,7 @@ a {
   margin-top: 50px;
   font-size: 40px;
   margin-bottom: 30px;
+
 }
 
 .all-stations-positioning-container {
@@ -160,4 +161,10 @@ a {
 .create-station-icon {
   margin-left: 15px;
   font-size: 20px;
+}
+
+.all-stations-card-station-name-container {
+  height: 30px;
+  font-size: 20px;
+  padding-top: 5px;
 }
