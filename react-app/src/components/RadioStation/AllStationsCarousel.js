@@ -21,9 +21,15 @@ const AllStationsCarousel = () => {
       <div className="carousel-container">
         {stations && (
           <Slider
-            slidesToShow={5}
+            slidesToShow={6}
             dots={false}
             responsive={[
+              {
+                breakpoint: 2000,
+                settings: {
+                  slidesToShow: 5,
+                },
+              },
               {
                 breakpoint: 1550,
                 settings: {

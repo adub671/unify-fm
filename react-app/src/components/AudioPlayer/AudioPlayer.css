@@ -157,5 +157,18 @@
   .now-playing-container {
     left: 240px;
     width: max-content;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
   }
+}
+
+.scroll-text-audio {
+  display: inline;
+}
+.now-playing-container-scroll {
+  display: flex;
+  overflow: hidden;
+  height: 20px;
+  padding-inline: 10px;
 }

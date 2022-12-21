@@ -9,11 +9,18 @@ def now_playing_parser(station):
     now_playing = "Data Not Found"
     # Kiosk Radio
     if url == "https://kioskradiobxl.airtime.pro/api/live-info-v2":
-        now_playing = data["tracks"]["current"]["metadata"]["track_title"]
+        now_playing = data["tracks"]["current"]["metadata"]["track_title"] + \
+            " - " + data["shows"]["current"]["name"]
+
     # Particle FM
     if url.startswith("https://azuracast.particle"):
-        now_playing = data["now_playing"]["streamer"] + \
-            " - " + data["now_playing"]["song"]["title"]
+
+        if len(data["now_playing"]["streamer"]) > 0:
+            now_playing = data["now_playing"]["streamer"] + \
+                " - " + data["now_playing"]["song"]["title"]
+        else:
+            now_playing = data["now_playing"]["song"]["title"]
+
     # IFM
     if url.startswith("https://www.intergalactic.fm/"):
         now_playing = data["title"]

@@ -50,3 +50,10 @@
 .slick-arrow:hover {
   background-color: rgb(230, 230, 230);
 }
+
+.no-favorites-placeholder {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 282px;
+}
