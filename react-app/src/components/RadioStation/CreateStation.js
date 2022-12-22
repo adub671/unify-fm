@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { newStation } from "../../store/radioStations";
+import ImageUpload from "../AWS/ImageUpload";
 
 const CreateStation = ({ setShowModal }) => {
   const dispatch = useDispatch();
@@ -29,6 +30,8 @@ const CreateStation = ({ setShowModal }) => {
     if (name?.length > 100) {
       errs.push("Station Name Must Be Less Than 100 Characters");
     }
+
+
 
     const payload = {
       name,
@@ -92,6 +95,8 @@ const CreateStation = ({ setShowModal }) => {
               }}
             />
           </div>
+
+
           <div className="form-fields">
             <label>Chat URL: </label>
             <input
@@ -178,7 +183,9 @@ const CreateStation = ({ setShowModal }) => {
             className="form-submit"
           ></input>
         </form>
+
         <div className="required-fields">* indicates field is required</div>
+        <ImageUpload />
       </div>
     </>
   );
