@@ -212,6 +212,7 @@ def seed_radio_stations():
     db.session.add(refuge)
     db.session.add(particle)
     db.session.add(nts1)
+    db.session.add(nts2)
     db.session.add(worldwide)
     db.session.add(balamii)
     db.session.add(dublab)

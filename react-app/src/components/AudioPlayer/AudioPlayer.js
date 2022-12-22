@@ -145,9 +145,9 @@ export default function AppAudioPlayer() {
               <div className="now-playing-image-container"></div>
 
               <div className="now-playing-title">
-                <span>Station: {currentStation?.name}</span>
+                <span><i class="fa-solid fa-radio"></i> &#160; {currentStation?.name}</span>
                 <div className="now-playing-container-scroll">
-                  <span>Now Playing: &#160;</span>{" "}
+                  <span><i class="fa-solid fa-music"></i> &#160;</span>{" "}
                   <Marquee text={nowPlaying} length={24} />
                 </div>
               </div>
@@ -181,7 +181,7 @@ export default function AppAudioPlayer() {
             showJumpControls={false}
             onClickNext={clickNext}
             onClickPrevious={clickPrev}
-            ocClickPlay={clickPlay}
+            onClickPlay={clickPlay}
           />
         </div>
       </div>

@@ -11,6 +11,7 @@ from .api.radio_station_routes import radio_station_routes
 from .seeds import seed_commands
 from .config import Config
 from .api.favorite_routes import favorite_routes
+from .api.aws_routes import aws_routes
 
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
@@ -33,6 +34,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(radio_station_routes, url_prefix='/api/station')
 app.register_blueprint(favorite_routes, url_prefix='/api/favorite')
+app.register_blueprint(aws_routes, url_prefix='/api/aws')
 db.init_app(app)
 Migrate(app, db)
 
