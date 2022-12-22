@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
 
 
-const ImageUpload = () => {
-    const history = useHistory(); // so that we can redirect after the image upload is successful
+const ImageUpload = ({setImageUrl}) => {
+
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
 
@@ -11,7 +11,8 @@ const ImageUpload = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append("image", image);
+        const file = e.target.files[0];
+        formData.append("image", file);
 
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
@@ -24,8 +25,7 @@ const ImageUpload = () => {
         if (res.ok) {
             const url = await res.json();
             setImageLoading(false);
-            // history.push("/images");
-            console.log(url, 'aws url')
+           setImageUrl(url.url)
         }
         else {
             setImageLoading(false);
@@ -45,7 +45,7 @@ const ImageUpload = () => {
             <input
               type="file"
               accept="image/*"
-              onChange={updateImage}
+              onChange={handleSubmit}
             />
             <button type="submit">Submit</button>
             {(imageLoading)&& <p>Loading...</p>}

@@ -1,7 +1,7 @@
 export const nowPlayingParser = async (station) => {
   try {
     const response = await fetch(`/api/station/${station.id}/nowplaying`);
-    console.log(response, "response parser");
+
     const nowPlayingData = await response.json();
 
     // console.log(nowPlayingData, "now playing data");
