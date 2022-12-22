@@ -181,7 +181,7 @@ export default function AppAudioPlayer() {
             showJumpControls={false}
             onClickNext={clickNext}
             onClickPrevious={clickPrev}
-            ocClickPlay={clickPlay}
+            onClickPlay={clickPlay}
           />
         </div>
       </div>

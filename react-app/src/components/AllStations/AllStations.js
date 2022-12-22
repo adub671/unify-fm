@@ -17,8 +17,10 @@ const AllStations = () => {
   return (
     <>
       <div className="all-stations-positioning-container">
-        <div className="all-stations-title">All Radio Stations</div>
-        <CreateStationButton />
+        <div className="all-stations-header">
+          <div className="all-stations-title">All Radio Stations </div>
+          <CreateStationButton />
+        </div>
 
         <div className="all-stations-container">
           {stations &&
