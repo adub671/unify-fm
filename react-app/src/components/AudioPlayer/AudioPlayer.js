@@ -23,6 +23,7 @@ export default function AppAudioPlayer() {
   const stations = useSelector((state) => state.stations);
   const user = useSelector((state) => state.session.user);
   const [nowPlaying, setNowPlaying] = useState("Loading....");
+  const [scanPauseTime, setScanPauseTime] = useState(10000);
   const [scan, setScan] = useState(false);
 
   const clickNext = () => {
@@ -99,7 +100,7 @@ export default function AppAudioPlayer() {
       if (scan) {
         clickNext();
       }
-    }, 10000);
+    }, scanPauseTime);
     return () => clearInterval(scanInterval);
   }, [scan, queuePosition]);
 
@@ -134,11 +135,26 @@ export default function AppAudioPlayer() {
           <div className="random-button" onClick={clickRandom}>
             <i className="fa fa-random"></i>
           </div>
-          <div
-            className={scan ? "scan-audio scan-active" : "scan-audio"}
-            onClick={clickScan}
-          >
-            SCAN
+          <div className="scan-container">
+            <div
+              className={scan ? "scan-audio scan-active" : "scan-audio"}
+              onClick={clickScan}
+            >
+              SCAN
+            </div>
+            <select
+              onChange={(e) => setScanPauseTime(parseInt(e.target.value))}
+              className="scan-select"
+            >
+              <option value="10000" disabled>
+                Select A Scan Interval &#160;
+              </option>
+              <option value="10000" selected>
+                10s
+              </option>
+              <option value="20000">20s</option>
+              <option value="30000">30s</option>
+            </select>
           </div>
 
           <div className="audio-favorite-container">
