@@ -27,6 +27,7 @@ export default function AppAudioPlayer() {
 
   const clickNext = () => {
     let newQueuePosition;
+    setNowPlaying("Loading...");
     if (stationQueue.length - 1 === queuePosition) {
       newQueuePosition = 0;
     } else {
@@ -46,6 +47,7 @@ export default function AppAudioPlayer() {
 
   const clickPrev = () => {
     let newQueuePosition;
+    setNowPlaying("Loading...");
 
     if (queuePosition === 0) {
       newQueuePosition = stationQueue.length - 1;
@@ -58,6 +60,7 @@ export default function AppAudioPlayer() {
   };
 
   const clickRandom = () => {
+    setNowPlaying("Loading...");
     if (!stationQueue.length) {
       const stationArr = Object.keys(stations);
       const newQueuePosition = Math.floor(Math.random() * stationArr.length);
