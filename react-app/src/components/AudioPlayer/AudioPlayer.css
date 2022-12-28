@@ -172,3 +172,16 @@
   height: 20px;
 
 }
+
+.scan-select {
+width: 15px;
+padding: 4px;
+border: none;
+}
+
+.scan-container {
+  display: flex;
+  flex-direction: row;
+  color: gray
+
+}

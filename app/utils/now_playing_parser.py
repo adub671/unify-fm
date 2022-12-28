@@ -45,7 +45,10 @@ def now_playing_parser(station):
             now_playing = data["results"][0]["now"]["broadcast_title"]
         if "2" in station["name"]:
             now_playing = data["results"][1]["now"]["broadcast_title"]
+    # Tune In
     if url.startswith("https://feed.tunein"):
         now_playing = data["Header"]["Subtitle"]
+    elif url is None:
+        now_playing = "Loading...."
 
     return jsonify(now_playing)

@@ -21,14 +21,24 @@ const AllStationsCard = ({ station, favorite }) => {
   const [play, setPlay] = useState(false);
   const favorites = useSelector((state) => state.favorites);
   const stations = useSelector((state) => state.stations);
-  const user = useSelector((state) => state.session.user);
   const [imageError, setImageError] = useState(false);
-  const [nowPlaying, setNowPlaying] = useState("");
+  const [nowPlaying, setNowPlaying] = useState("Loading...");
+  // useEffect(() => {
+  //   (async () => {
+  //     const playing = await nowPlayingParser(station);
+  //     setNowPlaying(playing);
+  //   })();
+  // }, [station]);
+
+  const nowPlayingGetter = async () => {
+    const playing = await nowPlayingParser(station);
+    setNowPlaying(playing);
+  };
+
   useEffect(() => {
-    (async () => {
-      const playing = await nowPlayingParser(station);
-      setNowPlaying(playing);
-    })();
+    nowPlayingGetter();
+    const nowPlayingInterval = setInterval(nowPlayingGetter, 6000);
+    return () => clearInterval(nowPlayingInterval);
   }, [station]);
 
   const playStation = () => {
@@ -107,7 +117,7 @@ const AllStationsCard = ({ station, favorite }) => {
               )}
             </div> */}
             <div className="all-stations-card-station-name-container">
-            <Marquee text={station?.name} length={24} />
+              <Marquee text={station?.name} length={24} />
             </div>
           </NavLink>
           {/* <div

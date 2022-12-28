@@ -22,11 +22,13 @@ export default function AppAudioPlayer() {
   } = useContext(AudioContext);
   const stations = useSelector((state) => state.stations);
   const user = useSelector((state) => state.session.user);
-  const [nowPlaying, setNowPlaying] = useState("");
+  const [nowPlaying, setNowPlaying] = useState("Loading....");
+  const [scanPauseTime, setScanPauseTime] = useState(10000);
   const [scan, setScan] = useState(false);
 
   const clickNext = () => {
     let newQueuePosition;
+    setNowPlaying("Loading...");
     if (stationQueue.length - 1 === queuePosition) {
       newQueuePosition = 0;
     } else {
@@ -46,6 +48,7 @@ export default function AppAudioPlayer() {
 
   const clickPrev = () => {
     let newQueuePosition;
+    setNowPlaying("Loading...");
 
     if (queuePosition === 0) {
       newQueuePosition = stationQueue.length - 1;
@@ -58,6 +61,7 @@ export default function AppAudioPlayer() {
   };
 
   const clickRandom = () => {
+    setNowPlaying("Loading...");
     if (!stationQueue.length) {
       const stationArr = Object.keys(stations);
       const newQueuePosition = Math.floor(Math.random() * stationArr.length);
@@ -92,19 +96,23 @@ export default function AppAudioPlayer() {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const scanInterval = setInterval(() => {
       if (scan) {
         clickNext();
       }
-    }, 10000);
-    return () => clearInterval(interval);
+    }, scanPauseTime);
+    return () => clearInterval(scanInterval);
   }, [scan, queuePosition]);
 
+  const nowPlayingGetter = async () => {
+    const playing = await nowPlayingParser(currentStation);
+    setNowPlaying(playing);
+  };
+
   useEffect(() => {
-    (async () => {
-      const playing = await nowPlayingParser(currentStation);
-      setNowPlaying(playing);
-    })();
+    nowPlayingGetter();
+    const nowPlayingInterval = setInterval(nowPlayingGetter, 6000);
+    return () => clearInterval(nowPlayingInterval);
   }, [currentStation]);
 
   if (currentStation?.name && "mediaSession" in navigator)
@@ -127,11 +135,26 @@ export default function AppAudioPlayer() {
           <div className="random-button" onClick={clickRandom}>
             <i className="fa fa-random"></i>
           </div>
-          <div
-            className={scan ? "scan-audio scan-active" : "scan-audio"}
-            onClick={clickScan}
-          >
-            SCAN
+          <div className="scan-container">
+            <div
+              className={scan ? "scan-audio scan-active" : "scan-audio"}
+              onClick={clickScan}
+            >
+              SCAN
+            </div>
+            <select
+              onChange={(e) => setScanPauseTime(parseInt(e.target.value))}
+              className="scan-select"
+            >
+              <option value="10000" disabled>
+                Select A Scan Interval &#160;
+              </option>
+              <option value="10000" selected>
+                10s
+              </option>
+              <option value="20000">20s</option>
+              <option value="30000">30s</option>
+            </select>
           </div>
 
           <div className="audio-favorite-container">
@@ -145,9 +168,14 @@ export default function AppAudioPlayer() {
               <div className="now-playing-image-container"></div>
 
               <div className="now-playing-title">
-                <span><i class="fa-solid fa-radio"></i> &#160; {currentStation?.name}</span>
+                <span>
+                  <i class="fa-solid fa-radio"></i> &#160;{" "}
+                  {currentStation?.name}
+                </span>
                 <div className="now-playing-container-scroll">
-                  <span><i class="fa-solid fa-music"></i> &#160;</span>{" "}
+                  <span>
+                    <i class="fa-solid fa-music"></i> &#160;
+                  </span>{" "}
                   <Marquee text={nowPlaying} length={24} />
                 </div>
               </div>
