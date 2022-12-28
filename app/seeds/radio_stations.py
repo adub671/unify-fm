@@ -44,6 +44,21 @@ def seed_radio_stations():
         additional_label_2="",
         additional_link_3="",
         additional_label_3="",)
+    ifmdm = RadioStation(
+        name='Intergalactic FM: The Dream Machine',
+        admin_id=2,
+        stream_url="https://radio.intergalactic.fm/3",
+        image_url="https://cdn-radiotime-logos.tunein.com/s110324g.png",
+        website_url="https://www.intergalactic.fm/channels/the-dream-machine",
+        chat_url="",
+        now_playing_url="https://www.intergalactic.fm/now-playing?channel=The%20Dream%20Machine",
+        calendar_url="",
+        additional_link_1="",
+        additional_label_1="",
+        additional_link_2="",
+        additional_label_2="",
+        additional_link_3="",
+        additional_label_3="",)
     refuge = RadioStation(
         name='Refuge WorldWide',
         admin_id=2,
@@ -209,6 +224,7 @@ def seed_radio_stations():
     db.session.add(kiosk)
     db.session.add(ifmdisco)
     db.session.add(ifmcbs)
+    db.session.add(ifmdm)
     db.session.add(refuge)
     db.session.add(particle)
     db.session.add(nts1)

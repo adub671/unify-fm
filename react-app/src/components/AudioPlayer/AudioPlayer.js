@@ -22,7 +22,7 @@ export default function AppAudioPlayer() {
   } = useContext(AudioContext);
   const stations = useSelector((state) => state.stations);
   const user = useSelector((state) => state.session.user);
-  const [nowPlaying, setNowPlaying] = useState("");
+  const [nowPlaying, setNowPlaying] = useState("Loading....");
   const [scan, setScan] = useState(false);
 
   const clickNext = () => {
@@ -92,19 +92,23 @@ export default function AppAudioPlayer() {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const scanInterval = setInterval(() => {
       if (scan) {
         clickNext();
       }
     }, 10000);
-    return () => clearInterval(interval);
+    return () => clearInterval(scanInterval);
   }, [scan, queuePosition]);
 
+  const nowPlayingGetter = async () => {
+    const playing = await nowPlayingParser(currentStation);
+    setNowPlaying(playing);
+  };
+
   useEffect(() => {
-    (async () => {
-      const playing = await nowPlayingParser(currentStation);
-      setNowPlaying(playing);
-    })();
+    nowPlayingGetter();
+    const nowPlayingInterval = setInterval(nowPlayingGetter, 6000);
+    return () => clearInterval(nowPlayingInterval);
   }, [currentStation]);
 
   if (currentStation?.name && "mediaSession" in navigator)
@@ -145,9 +149,14 @@ export default function AppAudioPlayer() {
               <div className="now-playing-image-container"></div>
 
               <div className="now-playing-title">
-                <span><i class="fa-solid fa-radio"></i> &#160; {currentStation?.name}</span>
+                <span>
+                  <i class="fa-solid fa-radio"></i> &#160;{" "}
+                  {currentStation?.name}
+                </span>
                 <div className="now-playing-container-scroll">
-                  <span><i class="fa-solid fa-music"></i> &#160;</span>{" "}
+                  <span>
+                    <i class="fa-solid fa-music"></i> &#160;
+                  </span>{" "}
                   <Marquee text={nowPlaying} length={24} />
                 </div>
               </div>
